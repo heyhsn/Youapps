@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blind Radar Terms of Service - Terms and conditions for using the Blind Radar navigation app.">
+    <title>Terms of Service - Blind Radar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #FFA500;
+            --dark-bg: #000000;
+            --light-text: #FFFFFF;
+            --gray-text: #888888;
+            --section-bg: #111111;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 2rem 4rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--gray-text);
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--light-text);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+            opacity: 0.9;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+            opacity: 0.9;
+        }
+
+        .highlight-box {
+            background-color: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .warning-box {
+            background-color: rgba(255, 68, 68, 0.1);
+            border-left: 4px solid #FF4444;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .warning-box h3 {
+            margin-top: 0;
+            color: #FF4444;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                padding: 80px 1.5rem 3rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Accessibility */
+        a:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span style="font-size: 2rem;">📡</span>
+                BLIND RADAR
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html" aria-current="page">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="content">
+        <h1>Terms of Service</h1>
+        <p class="last-updated">Last updated: June 9, 2025</p>
+
+        <div class="highlight-box">
+            <h3>📋 Agreement Summary</h3>
+            <p>By using Blind Radar, you agree to these terms. The app is provided as a navigation aid and should be used alongside traditional mobility tools. We prioritize your safety and privacy.</p>
+        </div>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By downloading, installing, or using Blind Radar ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.</p>
+
+        <h2>2. Description of Service</h2>
+        <p>Blind Radar is a navigation assistance application that uses augmented reality technology to detect obstacles and provide alerts through audio, haptic, and visual feedback. The App is designed to supplement, not replace, traditional mobility aids and techniques.</p>
+
+        <div class="warning-box">
+            <h3>⚠️ Important Safety Notice</h3>
+            <p>Blind Radar is an assistive tool and should NOT be relied upon as your sole means of navigation. Always use appropriate mobility aids (white cane, guide dog, etc.) and remain aware of your surroundings. The App may not detect all obstacles or hazards.</p>
+        </div>
+
+        <h2>3. Use of the App</h2>
+        <h3>3.1 Intended Use</h3>
+        <p>Blind Radar is intended to:</p>
+        <ul>
+            <li>Provide supplementary navigation assistance</li>
+            <li>Alert users to potential obstacles in their path</li>
+            <li>Enhance spatial awareness through multiple feedback methods</li>
+        </ul>
+
+        <h3>3.2 Limitations</h3>
+        <p>Users acknowledge that Blind Radar:</p>
+        <ul>
+            <li>May not detect all obstacles, especially transparent, reflective, or very dark objects</li>
+            <li>Has limited range and field of view</li>
+            <li>Requires adequate lighting for optimal performance</li>
+            <li>May be affected by environmental conditions</li>
+            <li>Should not be used while operating vehicles or machinery</li>
+        </ul>
+
+        <h3>3.3 User Responsibilities</h3>
+        <p>You agree to:</p>
+        <ul>
+            <li>Use the App responsibly and in accordance with all applicable laws</li>
+            <li>Maintain awareness of your surroundings at all times</li>
+            <li>Keep your device charged and in good working condition</li>
+            <li>Grant necessary permissions (camera, motion) for the App to function</li>
+            <li>Not modify, reverse engineer, or tamper with the App</li>
+        </ul>
+
+        <h2>4. Subscriptions and Purchases</h2>
+        <h3>4.1 Subscription Options</h3>
+        <p>Blind Radar offers various subscription plans:</p>
+        <ul>
+            <li>Monthly subscription (auto-renewable)</li>
+            <li>Yearly subscription (auto-renewable)</li>
+            <li>Lifetime purchase (one-time payment)</li>
+        </ul>
+
+        <h3>4.2 Free Trial</h3>
+        <p>New users may be eligible for a free trial period. At the end of the trial, you will need to purchase a subscription to continue using the App.</p>
+
+        <h3>4.3 Payment and Billing</h3>
+        <ul>
+            <li>All payments are processed through Apple's App Store</li>
+            <li>Subscriptions automatically renew unless cancelled</li>
+            <li>Prices may vary by region and are subject to change</li>
+            <li>Refunds are handled according to Apple's policies</li>
+        </ul>
+
+        <h3>4.4 Cancellation</h3>
+        <p>You may cancel your subscription at any time through your Apple ID account settings. Cancellation will take effect at the end of the current billing period.</p>
+
+        <h2>5. Privacy and Data Protection</h2>
+        <p>Your privacy is important to us. Please review our <a href="privacy.html" style="color: var(--primary-color);">Privacy Policy</a> to understand how we protect your information. Key points:</p>
+        <ul>
+            <li>We don't collect or store personal data</li>
+            <li>All processing happens on your device</li>
+            <li>No images or videos are saved or transmitted</li>
+            <li>We don't use tracking or analytics</li>
+        </ul>
+
+        <h2>6. Intellectual Property</h2>
+        <p>All content, features, and functionality of Blind Radar, including but not limited to text, graphics, logos, and software, are the exclusive property of YouApps and are protected by international copyright, trademark, and other intellectual property laws.</p>
+
+        <h2>7. Disclaimer of Warranties</h2>
+        <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT ANY WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO:</p>
+        <ul>
+            <li>The accuracy, reliability, or completeness of obstacle detection</li>
+            <li>The App's suitability for any particular purpose</li>
+            <li>Uninterrupted or error-free operation</li>
+            <li>Compatibility with all devices or iOS versions</li>
+        </ul>
+
+        <h2>8. Limitation of Liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, YOUAPPS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</p>
+        <ul>
+            <li>Personal injury or property damage</li>
+            <li>Lost profits or data</li>
+            <li>Failure to detect obstacles or hazards</li>
+            <li>Any damages arising from your use or inability to use the App</li>
+        </ul>
+
+        <h2>9. Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless YouApps, its officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from your use of the App or violation of these Terms.</p>
+
+        <h2>10. Updates and Modifications</h2>
+        <h3>10.1 App Updates</h3>
+        <p>We may release updates to improve functionality, fix bugs, or add features. Some updates may be required for continued use of the App.</p>
+
+        <h3>10.2 Terms Modifications</h3>
+        <p>We reserve the right to modify these Terms at any time. Material changes will be notified through the App or via email. Continued use after changes constitutes acceptance of the modified Terms.</p>
+
+        <h2>11. Termination</h2>
+        <p>We may terminate or suspend your access to the App immediately, without prior notice, for any reason, including but not limited to breach of these Terms.</p>
+
+        <h2>12. Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which YouApps operates, without regard to conflict of law principles.</p>
+
+        <h2>13. Accessibility</h2>
+        <p>We are committed to making Blind Radar accessible to all users. If you encounter accessibility issues or have suggestions for improvement, please contact us at <a href="mailto:info@youapp.co" style="color: var(--primary-color);">info@youapp.co</a>.</p>
+
+        <h2>14. Contact Information</h2>
+        <p>For questions about these Terms or the App, please contact us:</p>
+        <ul>
+            <li>Email: <a href="mailto:info@youapp.co" style="color: var(--primary-color);">info@youapp.co</a></li>
+            <li>Subject: "Blind Radar Terms Inquiry"</li>
+        </ul>
+
+        <h2>15. Entire Agreement</h2>
+        <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and YouApps regarding the use of Blind Radar and supersede any prior agreements.</p>
+
+        <div class="highlight-box">
+            <h3>🤝 Thank You</h3>
+            <p>Thank you for choosing Blind Radar. We're committed to providing a helpful navigation tool while respecting your privacy and safety. Stay safe and navigate with confidence!</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="mailto:info@youapp.co">Contact Support</a>
+        </div>
+        <a href="#top" class="back-to-top">Back to Top</a>
+        <p style="color: var(--gray-text); margin-top: 2rem;">© 2025 YouApps. All rights reserved.</p>
+    </footer>
+</body>
+</html>

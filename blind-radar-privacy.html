@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blind Radar Privacy Policy - Learn how we protect your privacy and handle your data.">
+    <title>Privacy Policy - Blind Radar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #FFA500;
+            --dark-bg: #000000;
+            --light-text: #FFFFFF;
+            --gray-text: #888888;
+            --section-bg: #111111;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 2rem 4rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--gray-text);
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--light-text);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+            opacity: 0.9;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+            opacity: 0.9;
+        }
+
+        .highlight-box {
+            background-color: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                padding: 80px 1.5rem 3rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Accessibility */
+        a:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span style="font-size: 2rem;">📡</span>
+                BLIND RADAR
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="content">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: June 9, 2025</p>
+
+        <div class="highlight-box">
+            <h3>🔒 Your Privacy is Our Priority</h3>
+            <p>Blind Radar is designed with privacy at its core. We don't collect, store, or share any personal data or camera footage. All processing happens entirely on your device.</p>
+        </div>
+
+        <h2>1. Information We Don't Collect</h2>
+        <p>Blind Radar is built with a privacy-first approach. We do NOT:</p>
+        <ul>
+            <li>Store or save any photos or videos from your camera</li>
+            <li>Upload any data to external servers</li>
+            <li>Track your location or movements</li>
+            <li>Collect personal identification information</li>
+            <li>Share any data with third parties</li>
+            <li>Use analytics or tracking tools</li>
+        </ul>
+
+        <h2>2. How Blind Radar Works</h2>
+        <p>Blind Radar uses your device's camera and AR capabilities to detect obstacles in real-time. All processing occurs locally on your iPhone using Apple's ARKit framework. The camera feed is analyzed in real-time and immediately discarded - no images or videos are ever saved or transmitted.</p>
+
+        <h3>2.1 Camera Access</h3>
+        <p>We request camera permission solely to:</p>
+        <ul>
+            <li>Detect obstacles and measure distances using AR technology</li>
+            <li>Provide real-time navigation assistance</li>
+            <li>Generate alerts based on your surroundings</li>
+        </ul>
+
+        <h3>2.2 Motion & Fitness Access</h3>
+        <p>We request motion permission to:</p>
+        <ul>
+            <li>Detect when you're walking to adjust alert timing</li>
+            <li>Optimize battery usage when stationary</li>
+            <li>Provide more accurate warnings based on movement speed</li>
+        </ul>
+
+        <h2>3. Data Processing</h2>
+        <p>All data processing happens exclusively on your device:</p>
+        <ul>
+            <li><strong>Real-time Analysis:</strong> Camera frames are analyzed instantly and discarded</li>
+            <li><strong>No Cloud Processing:</strong> We don't use any cloud services or external APIs</li>
+            <li><strong>No Data Retention:</strong> No information about detected objects is stored</li>
+            <li><strong>Settings Storage:</strong> Only your app preferences (sound theme, volume, etc.) are saved locally on your device</li>
+        </ul>
+
+        <h2>4. Third-Party Services</h2>
+        <h3>4.1 Apple Services</h3>
+        <p>Blind Radar uses the following Apple frameworks and services:</p>
+        <ul>
+            <li><strong>ARKit:</strong> For augmented reality and distance detection</li>
+            <li><strong>StoreKit:</strong> For in-app purchases and subscriptions</li>
+            <li><strong>Core Motion:</strong> For detecting movement and walking</li>
+            <li><strong>Core Haptics:</strong> For vibration feedback</li>
+        </ul>
+        <p>These Apple services operate according to Apple's privacy policy. We don't have access to any data processed by these frameworks beyond what's necessary for the app's functionality.</p>
+
+        <h3>4.2 Payment Processing</h3>
+        <p>All payment transactions are handled by Apple through the App Store. We don't process or have access to your payment information. Subscription validation occurs through Apple's secure servers.</p>
+
+        <h2>5. Data Security</h2>
+        <p>Since Blind Radar doesn't collect or transmit any personal data, there's no risk of data breaches or unauthorized access to your information. Your privacy is protected by design.</p>
+
+        <h2>6. Children's Privacy</h2>
+        <p>Blind Radar is suitable for users of all ages. Since we don't collect any personal information, there are no special provisions needed for children's privacy.</p>
+
+        <h2>7. Your Rights</h2>
+        <p>Since we don't collect any personal data, there's no data to access, modify, or delete. You maintain complete control over the app through your device's settings:</p>
+        <ul>
+            <li>Revoke camera access anytime in iOS Settings</li>
+            <li>Disable motion tracking in iOS Settings</li>
+            <li>Delete the app to remove all locally stored preferences</li>
+        </ul>
+
+        <h2>8. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated revision date. Continued use of Blind Radar after any changes indicates your acceptance of the updated policy.</p>
+
+        <h2>9. Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy or Blind Radar's privacy practices, please contact us:</p>
+        <ul>
+            <li>Email: <a href="mailto:info@youapp.co" style="color: var(--primary-color);">info@youapp.co</a></li>
+            <li>Subject Line: "Blind Radar Privacy Inquiry"</li>
+        </ul>
+
+        <h2>10. Accessibility Statement</h2>
+        <p>Blind Radar is designed to be fully accessible. We follow Apple's accessibility guidelines and continuously work to improve the app's usability for all users. If you encounter any accessibility issues, please contact us so we can address them promptly.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="mailto:info@youapp.co">Contact Support</a>
+        </div>
+        <a href="#top" class="back-to-top">Back to Top</a>
+        <p style="color: var(--gray-text); margin-top: 2rem;">© 2025 YouApps. All rights reserved.</p>
+    </footer>
+</body>
+</html>
