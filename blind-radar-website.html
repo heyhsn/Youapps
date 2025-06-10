@@ -420,7 +420,12 @@
         .skip-link:focus {
             top: 0;
         }
-    </style>
+    
+        .logo img {object-fit:contain;}
+        .radar-icon img {width:8rem;height:8rem;object-fit:contain;}
+        @media(max-width:768px){.radar-icon img{width:5rem;height:5rem;}}
+    
+</style>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
@@ -429,10 +434,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <span style="font-size: 2rem;">📡</span>
-                BLIND RADAR
-            </a>
+            <a href="#" class="logo"><img src="assets/icon512.png" alt="Blind Radar icon" width="32" height="32" style="vertical-align:middle;margin-right:0.5rem;">BLIND RADAR</a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
@@ -447,7 +449,7 @@
     <main id="main">
         <section class="hero">
             <div class="hero-content">
-                <div class="radar-icon">📡</div>
+                <div class="radar-icon"><img src="assets/icon512.png" alt="Blind Radar icon" width="128" height="128"></div>
                 <h1>BLIND RADAR</h1>
                 <p class="tagline">Navigate Your World with Confidence</p>
                 <p style="font-size: 1.2rem; color: #ccc; margin-bottom: 2rem;">
