@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Keys - The Accessible Keyboard for iOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .privacy-badge {
+            background-color: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        
+        .privacy-badge span {
+            font-weight: bold;
+        }
+        
+        .showcase {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        
+        .showcase-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .showcase-text p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .phone-mockup {
+            text-align: center;
+        }
+        
+        .phone-mockup img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .feature-highlight {
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .feature-highlight.green {
+            background-color: #5cb680;
+            color: white;
+        }
+        
+        .feature-highlight.orange {
+            background-color: #f39c5a;
+            color: white;
+        }
+        
+        .feature-highlight.yellow {
+            background-color: #f4d655;
+            color: #333;
+        }
+        
+        .feature-highlight.red {
+            background-color: #e17574;
+            color: white;
+        }
+        
+        .feature-highlight h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-highlight p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: #f5f5f7;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            background-color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .languages {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .languages h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        
+        .language-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .language-tag {
+            background-color: #f5f5f7;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .privacy-section {
+            padding: 80px 0;
+            background-color: #f5f5f7;
+            text-align: center;
+        }
+        
+        .privacy-section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .privacy-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .privacy-box h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .privacy-box p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .privacy-points {
+            text-align: left;
+            margin: 30px 0;
+        }
+        
+        .privacy-points li {
+            font-size: 18px;
+            margin-bottom: 15px;
+            list-style: none;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .privacy-points li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #5cb680;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-highlight h3 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="app-icon">B</div>
+                <span>Big Keys</span>
+            </div>
+            <a href="#download" class="cta-button" style="padding: 10px 25px; font-size: 16px;">Download</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Type Comfortably with Big Keys</h1>
+            <p>The accessible keyboard designed for everyone who needs larger, clearer keys</p>
+            <a href="#download" class="cta-button">Download on App Store</a>
+            <div class="privacy-badge">
+                🔒 <span>100% Private</span> - We don't collect ANY data
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase">
+        <div class="container">
+            <div class="showcase-grid">
+                <div class="showcase-text">
+                    <h2>Adjust The Size</h2>
+                    <p>Customize your keyboard to fit your needs perfectly. With adjustable key sizes up to 3x larger than standard keyboards, typing becomes comfortable and accurate for everyone.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="feature-highlight green">
+                        <h3>Adjust The Size</h3>
+                        <p>Make keys as big as you need</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showcase-grid" style="direction: rtl;">
+                <div class="showcase-text" style="direction: ltr;">
+                    <h2>Only Big Keyboard App with Emojis 🤗</h2>
+                    <p>Express yourself with our unique large emoji keyboard. Find and select emojis easily with bigger, clearer icons that are simple to tap.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="feature-highlight red">
+                        <h3>Only big keyboard app with emojis 🤗</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showcase-grid">
+                <div class="showcase-text">
+                    <h2>Numeric Keypad</h2>
+                    <p>Quick access to a large numeric keypad perfect for entering phone numbers, addresses, and calculations without switching keyboards.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="feature-highlight orange">
+                        <h3>Numeric Keypad</h3>
+                        <p>Easy number entry</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showcase-grid" style="direction: rtl;">
+                <div class="showcase-text" style="direction: ltr;">
+                    <h2>Easy Language Switch</h2>
+                    <p>Switch between languages seamlessly. Support for 15+ languages with optimized layouts for each one.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="feature-highlight yellow">
+                        <h3>Easy Language Switch</h3>
+                        <p>Multiple languages at your fingertips</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="privacy-section">
+        <div class="container">
+            <h2>Your Privacy is Our Priority</h2>
+            <div class="privacy-box">
+                <h3>🔐 Zero Data Collection</h3>
+                <p>Big Keys is designed with privacy at its core. We want to be crystal clear about this:</p>
+                <ul class="privacy-points">
+                    <li>We don't know who you are</li>
+                    <li>We don't read what you type</li>
+                    <li>We don't connect to any servers</li>
+                    <li>We don't track your usage</li>
+                    <li>We don't store any keystrokes</li>
+                    <li>Everything happens locally on your device</li>
+                </ul>
+                <p><strong>Your typing is 100% private.</strong> Big Keys works entirely offline on your device. There's no cloud connection, no analytics, no tracking - just a keyboard that respects your privacy.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Features That Make Typing Easier</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Larger Keys</h3>
+                    <p>Adjustable key sizes up to 3x larger than standard keyboards. Perfect for users with vision impairments or motor difficulties.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>15+ Languages</h3>
+                    <p>Support for multiple languages including English, Spanish, French, German, Arabic, Korean, and more with proper character layouts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Custom Themes</h3>
+                    <p>Choose from multiple color themes optimized for visibility and contrast. Create the perfect keyboard for your needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Smart Features</h3>
+                    <p>Auto-correction, predictive text, swipe gestures, and haptic feedback make typing faster and more accurate.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">😊</div>
+                    <h3>Emoji Support</h3>
+                    <p>Access a full emoji keyboard with larger emoji sizes for easy selection and expression.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <h3>Accessibility First</h3>
+                    <p>Full VoiceOver support, adjustable touch sensitivity, and customizable layouts for maximum accessibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="languages">
+        <div class="container">
+            <h2>Supported Languages</h2>
+            <div class="language-list">
+                <span class="language-tag">English</span>
+                <span class="language-tag">Spanish</span>
+                <span class="language-tag">French</span>
+                <span class="language-tag">German</span>
+                <span class="language-tag">Italian</span>
+                <span class="language-tag">Dutch</span>
+                <span class="language-tag">Norwegian</span>
+                <span class="language-tag">Swedish</span>
+                <span class="language-tag">Danish</span>
+                <span class="language-tag">Icelandic</span>
+                <span class="language-tag">Russian</span>
+                <span class="language-tag">Arabic</span>
+                <span class="language-tag">Korean</span>
+                <span class="language-tag">And more...</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" style="padding: 80px 0; background-color: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to Type Comfortably?</h2>
+            <p style="font-size: 20px; color: #666; margin-bottom: 40px;">Join thousands of users who have made typing easier with Big Keys</p>
+            <a href="https://apps.apple.com/app/big-keys" class="cta-button" style="background-color: #667eea; color: white; font-size: 20px; padding: 20px 50px;">
+                Download Free on App Store
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="mailto:support@bigkeys.app">Contact</a>
+            </div>
+            <p>&copy; 2024 Big Keys. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
