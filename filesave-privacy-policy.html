@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - File → Save</title>
+    <style>
+        :root {
+            --terminal-green: #00ff00;
+            --terminal-dark-green: #00cc00;
+            --terminal-bg: #000000;
+            --terminal-gray: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            background-color: var(--terminal-bg);
+            color: var(--terminal-green);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--terminal-green);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--terminal-green);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--terminal-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--terminal-dark-green);
+            text-shadow: 0 0 10px var(--terminal-green);
+        }
+
+        /* Main Content */
+        .privacy-container {
+            max-width: 800px;
+            margin: 100px auto 4rem;
+            padding: 2rem;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            border: 2px solid var(--terminal-green);
+            border-radius: 8px;
+            background: var(--terminal-gray);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .last-updated {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Terminal Style Sections */
+        .privacy-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--terminal-gray);
+            border: 1px solid var(--terminal-green);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--terminal-green), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--terminal-green);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        h2::before {
+            content: '>';
+            color: var(--terminal-dark-green);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--terminal-dark-green);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '→';
+            position: absolute;
+            left: -1.5rem;
+            color: var(--terminal-dark-green);
+        }
+
+        /* Key Points Box */
+        .key-points {
+            background: #001100;
+            border: 2px solid var(--terminal-green);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+        }
+
+        .key-points h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--terminal-green);
+        }
+
+        .key-points .point {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            border-top: 1px solid var(--terminal-green);
+        }
+
+        .contact-section a {
+            color: var(--terminal-green);
+            text-decoration: none;
+            border-bottom: 1px solid var(--terminal-green);
+            transition: all 0.3s ease;
+        }
+
+        .contact-section a:hover {
+            color: var(--terminal-dark-green);
+            text-shadow: 0 0 10px var(--terminal-green);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--terminal-green);
+            color: var(--terminal-bg);
+            padding: 1rem;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .privacy-container {
+                margin-top: 80px;
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">File → Save</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#security">Security</a></li>
+                <li><a href="index.html#download">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Privacy Policy Content -->
+    <div class="privacy-container">
+        <div class="privacy-header">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last Updated: January 2024</p>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">
+                Your privacy is not just a feature—it's our foundation.
+            </p>
+        </div>
+
+        <!-- The Simple Truth -->
+        <div class="key-points">
+            <h3>The Simple Truth</h3>
+            <p class="point">🔒 We CANNOT see your files</p>
+            <p class="point">🚫 We DO NOT collect any data</p>
+            <p class="point">☁️ We DO NOT use any cloud storage</p>
+            <p class="point">📱 Everything stays on YOUR device</p>
+        </div>
+
+        <!-- Introduction -->
+        <section class="privacy-section">
+            <h2>Introduction</h2>
+            <p>
+                File → Save is built on a fundamental principle: your files are yours alone. This privacy policy explains our commitment to absolute privacy and zero data collection.
+            </p>
+            <p>
+                Unlike other apps that claim to be private, we've designed File → Save from the ground up to be physically incapable of accessing your data. This isn't just a promise—it's how we built the app.
+            </p>
+        </section>
+
+        <!-- What We Don't Collect -->
+        <section class="privacy-section">
+            <h2>What We Don't Collect</h2>
+            <p>We don't collect anything. Specifically:</p>
+            <ul>
+                <li>No personal information</li>
+                <li>No device identifiers</li>
+                <li>No usage analytics</li>
+                <li>No crash reports</li>
+                <li>No location data</li>
+                <li>No file names or metadata</li>
+                <li>No encryption keys or passwords</li>
+                <li>No backup data</li>
+                <li>No behavioral data</li>
+                <li>Absolutely nothing</li>
+            </ul>
+        </section>
+
+        <!-- How Your Data is Protected -->
+        <section class="privacy-section">
+            <h2>How Your Data is Protected</h2>
+            
+            <h3>Local Storage Only</h3>
+            <p>
+                All your files are stored exclusively on your device. We have no servers, no cloud infrastructure, and no way to access your data remotely. Your files never leave your device unless you explicitly export them.
+            </p>
+
+            <h3>Military-Grade Encryption</h3>
+            <p>
+                Every file is encrypted using ChaCha20-Poly1305, a encryption algorithm. Your passcode is never stored—it's used to derive an encryption key that only exists in your device's memory while the app is open.
+            </p>
+
+            <h3>Zero-Knowledge Architecture</h3>
+            <p>
+                Even if someone forced us to try to access your data (which has never happened), we couldn't. We don't have your encryption keys, we don't have access to your device, and we don't have any backdoors.
+            </p>
+        </section>
+
+        <!-- Third-Party Services -->
+        <section class="privacy-section">
+            <h2>Third-Party Services</h2>
+            <p>
+                File → Save uses no third-party analytics, tracking, or data collection services. The only third-party integration is:
+            </p>
+            <ul>
+                <li><strong>Apple's App Store:</strong> For app distribution and optional in-app purchases. Apple's privacy policy applies to their services, not your encrypted files.</li>
+            </ul>
+            <p>
+                We don't use Google Analytics, Firebase, Crashlytics, or any other tracking service. Period.
+            </p>
+        </section>
+
+        <!-- Network Usage -->
+        <section class="privacy-section">
+            <h2>Network Usage</h2>
+            <p>
+                File → Save works completely offline. The app only uses the network for:
+            </p>
+            <ul>
+                <li>Checking your subscription status with Apple (if you have a premium subscription)</li>
+                <li>No other network activity whatsoever</li>
+            </ul>
+            <p>
+                The app includes network detection to alert you if you're connected to a network while using it, as an extra privacy measure. This detection happens locally and doesn't send any data anywhere.
+            </p>
+        </section>
+
+        <!-- Your Rights -->
+        <section class="privacy-section">
+            <h2>Your Rights</h2>
+            <p>
+                Since we don't collect any data, traditional privacy rights like access, correction, and deletion don't apply—there's nothing to access, correct, or delete on our end.
+            </p>
+            <p>
+                You have complete control over your data:
+            </p>
+            <ul>
+                <li>Delete files anytime from within the app</li>
+                <li>Export your encrypted backups</li>
+                <li>Uninstall the app to remove all data</li>
+                <li>Your data is yours, always</li>
+            </ul>
+        </section>
+
+        <!-- Data Breach Policy -->
+        <section class="privacy-section">
+            <h2>Data Breach? Impossible.</h2>
+            <p>
+                We can't have a data breach because we don't have your data. Your files exist only on your device, encrypted with keys we don't possess. 
+            </p>
+            <p>
+                Even if someone hacked our website (which contains no user data), or somehow accessed our development systems (which contain no user data), they would find... no user data.
+            </p>
+        </section>
+
+        <!-- Changes to Privacy Policy -->
+        <section class="privacy-section">
+            <h2>Changes to This Policy</h2>
+            <p>
+                We may update this privacy policy, but our core principle will never change: we don't collect your data. Any updates will be to clarify our practices or reflect new features that maintain our zero-data-collection approach.
+            </p>
+            <p>
+                Updates will be posted here with a new "Last Updated" date.
+            </p>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section">
+            <h2>Questions?</h2>
+            <p>
+                If you have any questions about our privacy practices, please contact us at:
+            </p>
+            <p style="margin-top: 1rem;">
+                <a href="mailto:privacy@filesave.app">privacy@filesave.app</a>
+            </p>
+            <p style="margin-top: 2rem; opacity: 0.8;">
+                Remember: We can't help you recover lost passwords or files because we don't have access to them. With great privacy comes great responsibility.
+            </p>
+        </section>
+    </div>
+
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">↑</a>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Show/hide back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+        
+        // Initial state
+        backToTop.style.opacity = '0';
+        backToTop.style.visibility = 'hidden';
+        backToTop.style.transition = 'all 0.3s ease';
+    </script>
+</body>
+</html>
