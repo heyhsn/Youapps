@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouApps.co - Investor Pitch Deck</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow: hidden;
+        }
+        
+        .presentation {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            padding: 80px;
+            display: none;
+            flex-direction: column;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #4A90E2, #7B68EE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+        
+        h3 {
+            font-size: 36px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #4A90E2;
+        }
+        
+        p {
+            font-size: 28px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+        
+        .subtitle {
+            font-size: 36px;
+            color: #999;
+            margin-bottom: 40px;
+        }
+        
+        .cover-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .logo-placeholder {
+            width: 200px;
+            height: 200px;
+            background: rgba(74, 144, 226, 0.2);
+            border: 3px dashed #4A90E2;
+            border-radius: 20px;
+            margin: 0 auto 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #4A90E2;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: #4A90E2;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 20px;
+            color: #999;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .app-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(74, 144, 226, 0.2);
+            border: 2px dashed #4A90E2;
+            border-radius: 20px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #4A90E2;
+        }
+        
+        .app-info h4 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        .app-info p {
+            font-size: 20px;
+            color: #999;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 500px;
+            margin-top: 40px;
+        }
+        
+        .roadmap-timeline {
+            margin-top: 40px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: #4A90E2;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 29px;
+            top: 50%;
+            width: 2px;
+            height: 100%;
+            background: rgba(74, 144, 226, 0.3);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: #4A90E2;
+            margin-right: 30px;
+            min-width: 120px;
+        }
+        
+        .timeline-content {
+            font-size: 24px;
+            color: #e0e0e0;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: rgba(74, 144, 226, 0.2);
+            border: 1px solid #4A90E2;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #4A90E2;
+        }
+        
+        .highlight {
+            color: #4A90E2;
+            font-weight: 600;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            text-align: center;
+        }
+        
+        .cta-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #4A90E2, #7B68EE);
+            color: white;
+            font-size: 32px;
+            padding: 25px 60px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        li {
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: #e0e0e0;
+        }
+        
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #4A90E2;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #4A90E2;
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .story-content {
+            background: rgba(74, 144, 226, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+        }
+        
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="presentation">
+        <!-- Slide 1: Cover -->
+        <div class="slide cover-slide active">
+            <div class="logo-placeholder">Company Logo</div>
+            <h1>YouApps.co</h1>
+            <p class="subtitle">Making technology accessible for 2.2 billion people worldwide</p>
+            <p style="font-size: 24px; color: #666; margin-top: 60px;">Investor Pitch Deck | July 2025</p>
+        </div>
+        
+        <!-- Slide 2: Why We Exist -->
+        <div class="slide">
+            <h2>Why We Exist: A Personal Mission</h2>
+            <div class="story-content">
+                <p style="font-size: 32px; line-height: 1.8;">
+                    As a <span class="highlight">legally blind developer</span>, I've spent my life struggling with technology that wasn't designed for people like me.
+                </p>
+                <p style="font-size: 28px; margin-top: 30px;">
+                    Every day, I face the same challenges that 2.2 billion people with disabilities encounter - tiny keyboards, inaccessible interfaces, and apps that prioritize aesthetics over usability.
+                </p>
+                <p style="font-size: 28px; margin-top: 30px;">
+                    <span class="highlight">YouApps exists because I refuse to accept that technology should exclude anyone.</span>
+                </p>
+            </div>
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="font-size: 36px; color: #4A90E2;">
+                    "We build the tools we wish existed"
+                </p>
+            </div>
+            <span class="slide-number">2 / 16</span>
+        </div>
+        
+        <!-- Slide 3: Problem -->
+        <div class="slide">
+            <h2>The Problem We Solve</h2>
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="color: #ff6b6b;">2.2 Billion People Are Left Behind</h3>
+                <ul style="margin-top: 40px;">
+                    <li>Visual impairments: Can't see standard keyboard keys or small text</li>
+                    <li>Motor disabilities: Struggle with precise touch targets</li>
+                    <li>Cognitive challenges: Overwhelmed by complex interfaces</li>
+                    <li>Aging population: Need simpler, clearer technology</li>
+                    <li>Privacy concerns: Forced to share data for basic functionality</li>
+                </ul>
+                <div style="margin-top: 60px; background: rgba(255, 67, 67, 0.1); padding: 30px; border-radius: 20px;">
+                    <p style="text-align: center; font-size: 32px;">
+                        The accessibility market is massively underserved
+                    </p>
+                </div>
+            </div>
+            <span class="slide-number">3 / 16</span>
+        </div>
+        
+        <!-- Slide 4: Solution & Traction -->
+        <div class="slide">
+            <h2>Our Solution: Apps That Actually Work</h2>
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-icon">Big Keys Icon</div>
+                    <div class="app-info">
+                        <h4>Big Keys Keyboard</h4>
+                        <p>Finally, a keyboard you can actually see and use</p>
+                    </div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">Blind Radar Icon</div>
+                    <div class="app-info">
+                        <h4>Blind Radar</h4>
+                        <p>Navigate the world with audio assistance</p>
+                    </div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">File Save Icon</div>
+                    <div class="app-info">
+                        <h4>File Save</h4>
+                        <p>Simple, private file management</p>
+                    </div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">Hey Beeps Icon</div>
+                    <div class="app-info">
+                        <h4>Hey Beeps</h4>
+                        <p>Customizable audio notifications</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-grid" style="margin-top: 60px;">
+                <div class="stat-box">
+                    <div class="stat-number">5K+</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">400</div>
+                    <div class="stat-label">Paid Subscribers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$117K</div>
+                    <div class="stat-label">Total Revenue</div>
+                </div>
+            </div>
+            <span class="slide-number">4 / 16</span>
+        </div>
+        
+        <!-- Slide 5: Achievements & Validation -->
+        <div class="slide">
+            <h2>Recognition from Industry Leaders</h2>
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 36px; color: #4A90E2; margin-bottom: 40px;">
+                    "I've personally demonstrated my apps to Apple's leadership"
+                </p>
+            </div>
+            <div class="achievement-grid">
+                <div class="achievement-item">
+                    <h3 style="color: #ffffff;">Tim Cook</h3>
+                    <p style="font-size: 20px;">CEO, Apple</p>
+                </div>
+                <div class="achievement-item">
+                    <h3 style="color: #ffffff;">Eddy Cue</h3>
+                    <p style="font-size: 20px;">SVP Services, Apple</p>
+                </div>
+                <div class="achievement-item">
+                    <h3 style="color: #ffffff;">Multiple Apple VPs</h3>
+                    <p style="font-size: 20px;">Accessibility & App Store Teams</p>
+                </div>
+                <div class="achievement-item">
+                    <h3 style="color: #ffffff;">JAWS Leadership</h3>
+                    <p style="font-size: 20px;">Leading Screen Reader Company</p>
+                </div>
+            </div>
+            <div style="margin-top: 60px; background: rgba(74, 144, 226, 0.2); padding: 40px; border-radius: 20px;">
+                <p style="text-align: center; font-size: 28px;">
+                    This validation from industry leaders confirms the massive need for our solutions
+                </p>
+            </div>
+            <span class="slide-number">5 / 16</span>
+        </div>
+        
+        <!-- Slide 6: Product Roadmap -->
+        <div class="slide">
+            <h2>Product Roadmap: Expanding Our Impact</h2>
+            <div class="roadmap-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Q4 2025</div>
+                    <div class="timeline-content">Launch Big Calculator & Big Tasks on iOS</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q1 2026</div>
+                    <div class="timeline-content">Android launch: Big Keys, File Save, Hey Beeps</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q2 2026</div>
+                    <div class="timeline-content">AI integration for enhanced accessibility</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q3 2026</div>
+                    <div class="timeline-content">5 new Big Apps utilities (Timer, Notes, etc.)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q4 2026</div>
+                    <div class="timeline-content">Complete Android ecosystem launch</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2027</div>
+                    <div class="timeline-content">Strategic acquisition discussions</div>
+                </div>
+            </div>
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="font-size: 28px; color: #4A90E2;">
+                    Building a comprehensive accessibility suite across all platforms
+                </p>
+            </div>
+            <span class="slide-number">6 / 16</span>
+        </div>
+        
+        <!-- Slide 7: Business Model -->
+        <div class="slide">
+            <h2>Simple, Fair Business Model</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
+                <div>
+                    <h3>Pricing Structure</h3>
+                    <ul>
+                        <li>Free tier with core features</li>
+                        <li>Monthly: $4.99/app</li>
+                        <li>Annual: $39.99/app (33% savings)</li>
+                        <li>Lifetime: $99.99/app</li>
+                        <li>Bundle (all apps): $9.99/month</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Unit Economics</h3>
+                    <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px;">
+                        <p><span class="highlight">Current Conversion:</span> 8%</p>
+                        <p><span class="highlight">Monthly Churn:</span> < 5%</p>
+                        <p><span class="highlight">LTV:</span> $127</p>
+                        <p><span class="highlight">CAC:</span> $12-18</p>
+                        <p><span class="highlight">Gross Margin:</span> 85%</p>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number">7 / 16</span>
+        </div>
+        
+        <!-- Slide 8: Market Opportunity -->
+        <div class="slide">
+            <h2>Massive, Growing Market</h2>
+            <div class="chart-container">
+                <canvas id="marketChart"></canvas>
+            </div>
+            <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 40px;">
+                <div class="stat-box">
+                    <div class="stat-number">$42B</div>
+                    <div class="stat-label">Accessibility Software Market</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2.2B</div>
+                    <div class="stat-label">People Need Our Solutions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">7%</div>
+                    <div class="stat-label">Annual Market Growth</div>
+                </div>
+            </div>
+            <span class="slide-number">8 / 16</span>
+        </div>
+        
+        <!-- Slide 9: Competitive Landscape -->
+        <div class="slide">
+            <h2>Why We Win: Real Solutions vs. Afterthoughts</h2>
+            <div style="margin-top: 40px;">
+                <table style="width: 100%; font-size: 24px; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #4A90E2;">
+                            <th style="text-align: left; padding: 20px;">Feature</th>
+                            <th style="text-align: center; padding: 20px;">YouApps</th>
+                            <th style="text-align: center; padding: 20px;">Apple</th>
+                            <th style="text-align: center; padding: 20px;">Google</th>
+                            <th style="text-align: center; padding: 20px;">SwiftKey</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 20px;">Truly Large Keys</td>
+                            <td style="text-align: center; color: #4CAF50;">✓</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 20px;">Built for Accessibility First</td>
+                            <td style="text-align: center; color: #4CAF50;">✓</td>
+                            <td style="text-align: center; color: #FFA500;">~</td>
+                            <td style="text-align: center; color: #FFA500;">~</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 20px;">Privacy by Design</td>
+                            <td style="text-align: center; color: #4CAF50;">✓</td>
+                            <td style="text-align: center; color: #4CAF50;">✓</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 20px;">Created by Users with Disabilities</td>
+                            <td style="text-align: center; color: #4CAF50;">✓</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top: 60px; text-align: center;">
+                <p style="font-size: 32px; color: #4A90E2;">
+                    We don't add accessibility as an afterthought - it's our only thought
+                </p>
+            </div>
+            <span class="slide-number">9 / 16</span>
+        </div>
+        
+        <!-- Slide 10: Growth Strategy -->
+        <div class="slide">
+            <h2>Path to 100x Growth</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
+                <div>
+                    <h3>Current Growth Channels</h3>
+                    <ul>
+                        <li>App Store Optimization (ASO)</li>
+                        <li>Apple Search Ads - <span class="highlight">3.4× ROAS</span></li>
+                        <li>Organic word-of-mouth</li>
+                        <li>Accessibility communities</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Scaling Strategy</h3>
+                    <ul>
+                        <li>Influencer partnerships (Molly Burke)</li>
+                        <li>Healthcare provider recommendations</li>
+                        <li>Disability organization partnerships</li>
+                        <li>AI-enhanced user acquisition</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 60px; background: rgba(74, 144, 226, 0.2); padding: 40px; border-radius: 20px;">
+                <p style="text-align: center; font-size: 32px;">
+                    <span class="highlight">Popular keyboards have 500M+ users</span><br>
+                    <span style="font-size: 28px;">We're targeting just 1% of the accessibility market = 22M users</span>
+                </p>
+            </div>
+            <span class="slide-number">10 / 16</span>
+        </div>
+        
+        <!-- Slide 11: Revenue Projections -->
+        <div class="slide">
+            <h2>Conservative Path to $120K+ MRR</h2>
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <div style="margin-top: 40px;">
+                <p style="text-align: center; font-size: 28px;">
+                    With proper marketing: <span class="highlight">500K users × 8% conversion × $4.99 = $200K MRR</span>
+                </p>
+                <p style="text-align: center; font-size: 24px; color: #999; margin-top: 20px;">
+                    (Only 0.02% of our total addressable market)
+                </p>
+            </div>
+            <span class="slide-number">11 / 16</span>
+        </div>
+        
+        <!-- Slide 12: Financial Projections -->
+        <div class="slide">
+            <h2>Multiple Paths to Success</h2>
+            <div class="chart-container">
+                <canvas id="projectionChart"></canvas>
+            </div>
+            <div class="stats-grid" style="margin-top: 40px;">
+                <div class="stat-box">
+                    <div class="stat-number">$120K</div>
+                    <div class="stat-label">Base Case MRR (2027)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$500K</div>
+                    <div class="stat-label">Realistic MRR Potential</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$2M+</div>
+                    <div class="stat-label">With 1% Market Share</div>
+                </div>
+            </div>
+            <span class="slide-number">12 / 16</span>
+        </div>
+        
+        <!-- Slide 13: The Investment -->
+        <div class="slide">
+            <h2>Investment Opportunity</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
+                <div>
+                    <h3>Round Details</h3>
+                    <ul>
+                        <li>Raising: <span class="highlight">$125K - $250K</span></li>
+                        <li>Equity: <span class="highlight">20%</span></li>
+                        <li>Valuation: <span class="highlight">$500K - $1M</span></li>
+                        <li>Type: Seed round</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Use of Funds</h3>
+                    <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px;">
+                        <p><span class="highlight">40%</span> Product Development</p>
+                        <p><span class="highlight">40%</span> Marketing & Growth</p>
+                        <p><span class="highlight">10%</span> Operations</p>
+                        <p><span class="highlight">10%</span> Buffer</p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 60px;">
+                <h3>18-Month Milestones</h3>
+                <ul>
+                    <li>Launch 5+ new Big Apps suite</li>
+                    <li>Complete Android ecosystem</li>
+                    <li>Integrate AI accessibility features</li>
+                    <li>Reach 100K+ active users</li>
+                    <li>Achieve $120K+ MRR</li>
+                </ul>
+            </div>
+            <span class="slide-number">13 / 16</span>
+        </div>
+        
+        <!-- Slide 14: Team -->
+        <div class="slide">
+            <h2>Team & Advisors</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Hassan Hattab</h3>
+                    <p style="color: #4A90E2;">Founder & CEO</p>
+                    <p style="font-size: 20px;">Legally blind developer with 8+ years building accessibility solutions</p>
+                </div>
+                <div class="team-member">
+                    <h3>Molly Burke</h3>
+                    <p style="color: #4A90E2;">Advisor</p>
+                    <p style="font-size: 20px;">Leading blind influencer & accessibility advocate</p>
+                </div>
+            </div>
+            <div style="margin-top: 60px; background: rgba(74, 144, 226, 0.1); padding: 40px; border-radius: 20px;">
+                <p style="text-align: center; font-size: 28px;">
+                    "We don't build for people with disabilities.<br>
+                    <span class="highlight">We are people with disabilities building for our community.</span>"
+                </p>
+            </div>
+            <span class="slide-number">14 / 16</span>
+        </div>
+        
+        <!-- Slide 15: Exit Strategy -->
+        <div class="slide">
+            <h2>Clear Path to Exit</h2>
+            <div style="margin-top: 60px;">
+                <h3 style="text-align: center; margin-bottom: 40px;">Strategic Acquisition Targets</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
+                    <div class="stat-box">
+                        <h3 style="color: #ffffff; margin-bottom: 20px;">Apple</h3>
+                        <p style="font-size: 20px;">Perfect fit for their accessibility ecosystem</p>
+                        <p style="font-size: 18px; color: #4A90E2; margin-top: 10px;">Already validated by Tim Cook</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3 style="color: #ffffff; margin-bottom: 20px;">Google</h3>
+                        <p style="font-size: 20px;">Enhance Android accessibility leadership</p>
+                        <p style="font-size: 18px; color: #4A90E2; margin-top: 10px;">Massive distribution potential</p>
+                    </div>
+                </div>
+                <div style="margin-top: 60px; text-align: center;">
+                    <p style="font-size: 32px; color: #4A90E2;">
+                        Target acquisition: 2028-2029<br>
+                        <span style="font-size: 28px; color: #e0e0e0;">Expected return: 10-50x</span>
+                    </p>
+                </div>
+            </div>
+            <span class="slide-number">15 / 16</span>
+        </div>
+        
+        <!-- Slide 16: Call to Action -->
+        <div class="slide cta-slide">
+            <h1>Join Us in Making Tech Accessible</h1>
+            <p style="font-size: 36px; margin: 40px 0;">
+                Help us serve 2.2 billion people who deserve better technology
+            </p>
+            <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 1000px; margin: 60px auto;">
+                <div class="stat-box">
+                    <div class="stat-number">2.2B</div>
+                    <div class="stat-label">People Need This</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$42B</div>
+                    <div class="stat-label">Market Opportunity</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">10-50x</div>
+                    <div class="stat-label">Expected Return</div>
+                </div>
+            </div>
+            <button class="cta-button">Let's Build an Accessible Future Together</button>
+            <p style="margin-top: 40px; font-size: 24px; color: #666;">
+                hassan@youapps.co | youapps.co
+            </p>
+            <span class="slide-number">16 / 16</span>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn">Previous</button>
+        <button class="nav-btn" id="nextBtn">Next</button>
+    </div>
+    
+    <script>
+        // Navigation
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById('progressBar');
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = progress + '%';
+        }
+        
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+        });
+        
+        // Market Size Chart
+        const marketCtx = document.getElementById('marketChart');
+        if (marketCtx) {
+            new Chart(marketCtx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Accessibility Software Market', 'Our Initial Target (1%)', 'Current Market Share'],
+                    datasets: [{
+                        data: [42000, 420, 0.5],
+                        backgroundColor: [
+                            'rgba(74, 144, 226, 0.3)',
+                            'rgba(74, 144, 226, 0.6)',
+                            'rgba(123, 104, 238, 0.8)'
+                        ],
+                        borderColor: [
+                            '#4A90E2',
+                            '#4A90E2',
+                            '#7B68EE'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#ffffff',
+                                padding: 20,
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': $' + context.parsed + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Revenue Growth Chart
+        const revenueCtx = document.getElementById('revenueChart');
+        if (revenueCtx) {
+            new Chart(revenueCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Current', 'Q4 2025', 'Q2 2026', 'Q4 2026', 'Q2 2027', 'Q4 2027'],
+                    datasets: [{
+                        label: 'Conservative MRR',
+                        data: [6.2, 15, 35, 60, 90, 120],
+                        borderColor: '#4A90E2',
+                        backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Realistic Growth',
+                        data: [6.2, 25, 75, 150, 300, 500],
+                        borderColor: '#7B68EE',
+                        backgroundColor: 'rgba(123, 104, 238, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': $' + context.parsed.y + 'K MRR';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#ffffff',
+                                callback: function(value) {
+                                    return '$' + value + 'K';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffffff'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // User Growth Projection Chart
+        const projectionCtx = document.getElementById('projectionChart');
+        if (projectionCtx) {
+            new Chart(projectionCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Current', '6 months', '12 months', '18 months', '24 months'],
+                    datasets: [{
+                        label: 'Active Users',
+                        data: [5000, 25000, 100000, 250000, 500000],
+                        backgroundColor: 'rgba(74, 144, 226, 0.6)',
+                        borderColor: '#4A90E2',
+                        borderWidth: 2
+                    }, {
+                        label: 'Paid Subscribers',
+                        data: [400, 2000, 8000, 20000, 40000],
+                        backgroundColor: 'rgba(123, 104, 238, 0.6)',
+                        borderColor: '#7B68EE',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#ffffff',
+                                callback: function(value) {
+                                    if (value >= 1000) {
+                                        return (value / 1000) + 'K';
+                                    }
+                                    return value;
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffffff'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        updateProgress();
+    </script>
+</body>
+</html>
