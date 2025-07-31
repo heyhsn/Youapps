@@ -9,6 +9,12 @@
         * {
             margin: 0;
             padding: 0;
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let myAlert = storyboard.instantiateViewController(withIdentifier: "Intro") as! IntroViewController
+            myAlert.modalPresentationStyle = .fullScreen
+            let navigationController = UINavigationController(rootViewController: myAlert)
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true, completion: nil)
             box-sizing: border-box;
         }
         
@@ -359,6 +365,21 @@
             border-radius: 15px;
             text-align: center;
         }
+        
+        .source-note {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            text-align: right;
+        }
+        
+        .metric-definition {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -369,7 +390,7 @@
         <div class="slide cover-slide active">
             <div class="logo-placeholder">Company Logo</div>
             <h1>YouApps.co</h1>
-            <p class="subtitle">Making technology accessible for 2.2 billion people worldwide</p>
+            <p class="subtitle">Making technology accessible for over 3 billion people worldwide</p>
             <p style="font-size: 24px; color: #666; margin-top: 60px;">Investor Pitch Deck | July 2025</p>
         </div>
         
@@ -381,7 +402,7 @@
                     As a <span class="highlight">legally blind developer</span>, I've spent my life struggling with technology that wasn't designed for people like me.
                 </p>
                 <p style="font-size: 28px; margin-top: 30px;">
-                    Every day, I face the same challenges that 2.2 billion people with disabilities encounter - tiny keyboards, inaccessible interfaces, and apps that prioritize aesthetics over usability.
+                    Every day, I face the same challenges that billions of people encounter - tiny keyboards, inaccessible interfaces, and apps that prioritize aesthetics over usability.
                 </p>
                 <p style="font-size: 28px; margin-top: 30px;">
                     <span class="highlight">YouApps exists because I refuse to accept that technology should exclude anyone.</span>
@@ -395,24 +416,37 @@
             <span class="slide-number">2 / 16</span>
         </div>
         
-        <!-- Slide 3: Problem -->
+        <!-- Slide 3: Market Opportunity -->
         <div class="slide">
-            <h2>The Problem We Solve</h2>
+            <h2>The Market: Billions Need Our Solution</h2>
             <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                <h3 style="color: #ff6b6b;">2.2 Billion People Are Left Behind</h3>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">1.3B</div>
+                        <div class="stat-label">People with Disabilities</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">2.2B</div>
+                        <div class="stat-label">Vision Impaired</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">830M</div>
+                        <div class="stat-label">Aged 65+</div>
+                    </div>
+                </div>
                 <ul style="margin-top: 40px;">
-                    <li>Visual impairments: Can't see standard keyboard keys or small text</li>
-                    <li>Motor disabilities: Struggle with precise touch targets</li>
-                    <li>Cognitive challenges: Overwhelmed by complex interfaces</li>
-                    <li>Aging population: Need simpler, clearer technology</li>
-                    <li>Privacy concerns: Forced to share data for basic functionality</li>
+                    <li>61% of adults 65+ own smartphones (Pew Research)</li>
+                    <li>84% of people with disabilities use smartphones daily (GSMA)</li>
+                    <li>59% of seniors say tech isn't designed for them</li>
+                    <li>Only 10% in developing countries have assistive tech (WHO/UNICEF)</li>
                 </ul>
-                <div style="margin-top: 60px; background: rgba(255, 67, 67, 0.1); padding: 30px; border-radius: 20px;">
+                <div style="margin-top: 40px; background: rgba(74, 144, 226, 0.2); padding: 30px; border-radius: 20px;">
                     <p style="text-align: center; font-size: 32px;">
-                        The accessibility market is massively underserved
+                        By 2054: <span class="highlight">1.7 billion people over 65</span>
                     </p>
                 </div>
             </div>
+            <p class="source-note">Sources: WHO, Pew Research, Our World in Data</p>
             <span class="slide-number">3 / 16</span>
         </div>
         
@@ -452,15 +486,15 @@
             <div class="stats-grid" style="margin-top: 60px;">
                 <div class="stat-box">
                     <div class="stat-number">5K+</div>
-                    <div class="stat-label">Active Users</div>
+                    <div class="stat-label">Monthly Active Users</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">400</div>
                     <div class="stat-label">Paid Subscribers</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">$117K</div>
-                    <div class="stat-label">Total Revenue</div>
+                    <div class="stat-number">$2.5K</div>
+                    <div class="stat-label">Current MRR</div>
                 </div>
             </div>
             <span class="slide-number">4 / 16</span>
@@ -539,7 +573,7 @@
         
         <!-- Slide 7: Business Model -->
         <div class="slide">
-            <h2>Simple, Fair Business Model</h2>
+            <h2>Business Model & Key Metrics</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
                 <div>
                     <h3>Pricing Structure</h3>
@@ -552,54 +586,78 @@
                     </ul>
                 </div>
                 <div>
-                    <h3>Unit Economics</h3>
-                    <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px;">
-                        <p><span class="highlight">Current Conversion:</span> 8%</p>
-                        <p><span class="highlight">Monthly Churn:</span> < 5%</p>
-                        <p><span class="highlight">LTV:</span> $127</p>
-                        <p><span class="highlight">CAC:</span> $12-18</p>
-                        <p><span class="highlight">Gross Margin:</span> 85%</p>
+                    <h3>Key Metrics Explained</h3>
+                    <div class="metric-definition">
+                        <strong>MRR:</strong> Monthly Recurring Revenue = $2,500<br>
+                        <span style="font-size: 16px; color: #999;">(Up from $800 six months ago - 212% growth)</span>
+                    </div>
+                    <div class="metric-definition">
+                        <strong>CAC:</strong> Cost to Acquire Customer = $15-20
+                    </div>
+                    <div class="metric-definition">
+                        <strong>LTV:</strong> Customer Lifetime Value = $125<br>
+                        <span style="font-size: 16px; color: #999;">(Based on avg 25 month retention at $4.99/mo)</span>
+                    </div>
+                    <div class="metric-definition">
+                        <strong>Churn:</strong> 3-5% monthly (industry avg: 5-7%)
                     </div>
                 </div>
             </div>
+            <p style="margin-top: 40px; font-size: 20px; color: #999;">
+                Note: Accessibility apps show 44-53% annual retention vs 6% for general apps
+            </p>
             <span class="slide-number">7 / 16</span>
         </div>
         
-        <!-- Slide 8: Market Opportunity -->
+        <!-- Slide 8: Market Size -->
         <div class="slide">
-            <h2>Massive, Growing Market</h2>
+            <h2>Market Opportunity</h2>
             <div class="chart-container">
                 <canvas id="marketChart"></canvas>
             </div>
             <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 40px;">
                 <div class="stat-box">
-                    <div class="stat-number">$42B</div>
-                    <div class="stat-label">Accessibility Software Market</div>
+                    <div class="stat-number">$770M</div>
+                    <div class="stat-label">Digital Accessibility Market 2024</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">2.2B</div>
-                    <div class="stat-label">People Need Our Solutions</div>
+                    <div class="stat-number">$1.3B</div>
+                    <div class="stat-label">Projected by 2030</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">7%</div>
-                    <div class="stat-label">Annual Market Growth</div>
+                    <div class="stat-number">7.5%</div>
+                    <div class="stat-label">Annual Growth (CAGR)</div>
                 </div>
             </div>
+            <p class="source-note">Source: Grand View Research, Market Research Future</p>
             <span class="slide-number">8 / 16</span>
         </div>
         
         <!-- Slide 9: Competitive Landscape -->
         <div class="slide">
-            <h2>Why We Win: Real Solutions vs. Afterthoughts</h2>
+            <h2>Why We Win: Built by Users, For Users</h2>
             <div style="margin-top: 40px;">
+                <h3 style="text-align: center; margin-bottom: 30px;">Target Market: Why Android First?</h3>
+                <ul style="margin-bottom: 30px;">
+                    <li>Older adults prefer Android (lower cost, familiar interfaces)</li>
+                    <li>Android dominates in emerging markets where 80% of elderly will live by 2050</li>
+                    <li>Less competition: TalkBack/Voice Access lack customization</li>
+                    <li>Our Big Keys fills gap between basic Android accessibility and full solutions</li>
+                </ul>
+                <h3 style="margin-bottom: 30px;">Keyboard App Market Context</h3>
+                <ul style="margin-bottom: 40px;">
+                    <li>Gboard: 10+ billion downloads (first keyboard to reach this)</li>
+                    <li>TouchPal: 712 million users</li>
+                    <li>Virtual keyboard market: $1.25B in 2024</li>
+                    <li>Yet ZERO mainstream keyboards truly serve accessibility needs</li>
+                </ul>
                 <table style="width: 100%; font-size: 24px; border-collapse: collapse;">
                     <thead>
                         <tr style="border-bottom: 2px solid #4A90E2;">
                             <th style="text-align: left; padding: 20px;">Feature</th>
                             <th style="text-align: center; padding: 20px;">YouApps</th>
+                            <th style="text-align: center; padding: 20px;">Gboard</th>
                             <th style="text-align: center; padding: 20px;">Apple</th>
-                            <th style="text-align: center; padding: 20px;">Google</th>
-                            <th style="text-align: center; padding: 20px;">SwiftKey</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -608,67 +666,51 @@
                             <td style="text-align: center; color: #4CAF50;">✓</td>
                             <td style="text-align: center; color: #ff6b6b;">✗</td>
                             <td style="text-align: center; color: #ff6b6b;">✗</td>
-                            <td style="text-align: center; color: #ff6b6b;">✗</td>
                         </tr>
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
                             <td style="padding: 20px;">Built for Accessibility First</td>
                             <td style="text-align: center; color: #4CAF50;">✓</td>
+                            <td style="text-align: center; color: #ff6b6b;">✗</td>
                             <td style="text-align: center; color: #FFA500;">~</td>
-                            <td style="text-align: center; color: #FFA500;">~</td>
-                            <td style="text-align: center; color: #ff6b6b;">✗</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <td style="padding: 20px;">Privacy by Design</td>
-                            <td style="text-align: center; color: #4CAF50;">✓</td>
-                            <td style="text-align: center; color: #4CAF50;">✓</td>
-                            <td style="text-align: center; color: #ff6b6b;">✗</td>
-                            <td style="text-align: center; color: #ff6b6b;">✗</td>
                         </tr>
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
                             <td style="padding: 20px;">Created by Users with Disabilities</td>
                             <td style="text-align: center; color: #4CAF50;">✓</td>
                             <td style="text-align: center; color: #ff6b6b;">✗</td>
                             <td style="text-align: center; color: #ff6b6b;">✗</td>
-                            <td style="text-align: center; color: #ff6b6b;">✗</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div style="margin-top: 60px; text-align: center;">
-                <p style="font-size: 32px; color: #4A90E2;">
-                    We don't add accessibility as an afterthought - it's our only thought
-                </p>
-            </div>
             <span class="slide-number">9 / 16</span>
         </div>
         
-        <!-- Slide 10: Growth Strategy -->
+        <!-- Slide 10: Platform Strategy -->
         <div class="slide">
-            <h2>Path to 100x Growth</h2>
+            <h2>Platform Strategy: Android First, Then iOS</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
                 <div>
-                    <h3>Current Growth Channels</h3>
+                    <h3>Global Market Share</h3>
                     <ul>
-                        <li>App Store Optimization (ASO)</li>
-                        <li>Apple Search Ads - <span class="highlight">3.4× ROAS</span></li>
-                        <li>Organic word-of-mouth</li>
-                        <li>Accessibility communities</li>
+                        <li><span class="highlight">Android: 71.4%</span> worldwide</li>
+                        <li>iOS: 28.6% worldwide</li>
+                        <li>Older adults prefer Android</li>
+                        <li>Emerging markets: 90%+ Android</li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Scaling Strategy</h3>
+                    <h3>Strategic Focus</h3>
                     <ul>
-                        <li>Accessibility influencer partnerships</li>
-                        <li>Healthcare provider recommendations</li>
-                        <li>Disability organization partnerships</li>
-                        <li>AI-enhanced user acquisition</li>
+                        <li>Android dominates in Asia (92-95%)</li>
+                        <li>80% of elderly will be in developing countries by 2050</li>
+                        <li>Lower income users need affordable solutions</li>
+                        <li>iOS for premium positioning in US/Europe</li>
                     </ul>
                 </div>
             </div>
             <div style="margin-top: 60px; background: rgba(74, 144, 226, 0.2); padding: 40px; border-radius: 20px;">
-                <p style="text-align: center; font-size: 32px;">
-                    <span class="highlight">Popular keyboards have 500M+ users</span><br>
-                    <span style="font-size: 28px;">We're targeting just 1% of the accessibility market = 22M users</span>
+                <p style="text-align: center; font-size: 28px;">
+                    Android expansion unlocks <span class="highlight">2.5x larger market</span>
                 </p>
             </div>
             <span class="slide-number">10 / 16</span>
@@ -676,16 +718,16 @@
         
         <!-- Slide 11: Revenue Projections -->
         <div class="slide">
-            <h2>Conservative Path to $120K+ MRR</h2>
+            <h2>Path to $120K+ MRR</h2>
             <div class="chart-container">
                 <canvas id="revenueChart"></canvas>
             </div>
             <div style="margin-top: 40px;">
-                <p style="text-align: center; font-size: 28px;">
-                    With proper marketing: <span class="highlight">500K users × 8% conversion × $4.99 = $200K MRR</span>
-                </p>
-                <p style="text-align: center; font-size: 24px; color: #999; margin-top: 20px;">
-                    (Only 0.02% of our total addressable market)
+                <h3 style="text-align: center; margin-bottom: 20px;">MRR Calculation Example</h3>
+                <p style="text-align: center; font-size: 26px; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px;">
+                    <strong>Conservative:</strong> 50K users × 5% conversion × $4.99 = $12,475 MRR<br>
+                    <strong>Target:</strong> 500K users × 5% conversion × $4.99 = $124,750 MRR<br>
+                    <strong>Stretch:</strong> 1M users × 8% conversion × $6.99 = $559,200 MRR
                 </p>
             </div>
             <span class="slide-number">11 / 16</span>
@@ -693,58 +735,58 @@
         
         <!-- Slide 12: Financial Projections -->
         <div class="slide">
-            <h2>Multiple Paths to Success</h2>
+            <h2>Growth Projections</h2>
             <div class="chart-container">
                 <canvas id="projectionChart"></canvas>
             </div>
             <div class="stats-grid" style="margin-top: 40px;">
                 <div class="stat-box">
                     <div class="stat-number">$120K</div>
-                    <div class="stat-label">Base Case MRR (2027)</div>
+                    <div class="stat-label">Target MRR (Q4 2027)</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">$500K</div>
-                    <div class="stat-label">Realistic MRR Potential</div>
+                    <div class="stat-number">25K</div>
+                    <div class="stat-label">Paying Users Needed</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">$2M+</div>
-                    <div class="stat-label">With 1% Market Share</div>
+                    <div class="stat-number">0.001%</div>
+                    <div class="stat-label">Of Target Market</div>
                 </div>
             </div>
             <span class="slide-number">12 / 16</span>
         </div>
         
-        <!-- Slide 13: The Investment -->
+        <!-- Slide 13: Investment Terms -->
         <div class="slide">
             <h2>Investment Opportunity</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
                 <div>
-                    <h3>Round Details</h3>
+                    <h3>What We're Offering</h3>
                     <ul>
                         <li>Raising: <span class="highlight">$125K - $250K</span></li>
-                        <li>Equity: <span class="highlight">20%</span></li>
-                        <li>Valuation: <span class="highlight">$500K - $1M</span></li>
-                        <li>Type: Seed round</li>
+                        <li>For: <span class="highlight">20% equity shares</span></li>
+                        <li>Pre-money valuation: <span class="highlight">$500K - $1M</span></li>
+                        <li>Will incorporate as Delaware C-Corp upon funding</li>
+                        <li>SAFE notes available for this round</li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Use of Funds</h3>
+                    <h3>Use of Funds (18 months)</h3>
                     <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px;">
-                        <p><span class="highlight">40%</span> Product Development</p>
-                        <p><span class="highlight">40%</span> Marketing & Growth</p>
-                        <p><span class="highlight">10%</span> Operations</p>
-                        <p><span class="highlight">10%</span> Buffer</p>
+                        <p><span class="highlight">40%</span> Product Development (contractors)</p>
+                        <p><span class="highlight">40%</span> Marketing & User Acquisition</p>
+                        <p><span class="highlight">10%</span> Operations & Infrastructure</p>
+                        <p><span class="highlight">10%</span> Contingency/Reserve</p>
                     </div>
                 </div>
             </div>
             <div style="margin-top: 60px;">
-                <h3>18-Month Milestones</h3>
+                <h3>Development Focus (No Full-Time Hires)</h3>
                 <ul>
-                    <li>Launch 5+ new Big Apps suite</li>
-                    <li>Complete Android ecosystem</li>
-                    <li>Integrate AI accessibility features</li>
-                    <li>Reach 100K+ active users</li>
-                    <li>Achieve $120K+ MRR</li>
+                    <li>5 new iOS apps (Calculator, Tasks, Timer, Notes, Magnifier)</li>
+                    <li>Android ports of all existing apps</li>
+                    <li>AI integration for voice commands</li>
+                    <li>All development via specialized contractors</li>
                 </ul>
             </div>
             <span class="slide-number">13 / 16</span>
@@ -752,7 +794,7 @@
         
         <!-- Slide 14: Team -->
         <div class="slide">
-            <h2>Team</h2>
+            <h2>Founder</h2>
             <div style="text-align: center; margin-top: 60px;">
                 <div style="max-width: 600px; margin: 0 auto;">
                     <h3>Hassan Hattab</h3>
@@ -760,15 +802,6 @@
                     <p style="font-size: 24px; line-height: 1.8;">Legally blind developer with 8+ years building accessibility solutions</p>
                     <p style="font-size: 24px; line-height: 1.8; margin-top: 20px;">Personal experience with accessibility challenges drives every product decision</p>
                 </div>
-            </div>
-            <div style="margin-top: 60px;">
-                <h3>Planned Hires (with funding)</h3>
-                <ul>
-                    <li>Senior iOS Developer - to accelerate Big Apps suite</li>
-                    <li>Android Development Lead - for complete platform parity</li>
-                    <li>Growth Marketing Manager - to reach our community</li>
-                    <li>Customer Success Lead - to ensure user satisfaction</li>
-                </ul>
             </div>
             <div style="margin-top: 60px; background: rgba(74, 144, 226, 0.1); padding: 40px; border-radius: 20px;">
                 <p style="text-align: center; font-size: 28px;">
@@ -799,6 +832,7 @@
                 <div style="margin-top: 60px; text-align: center;">
                     <p style="font-size: 32px; color: #4A90E2;">
                         Target acquisition: 2028-2029<br>
+                        <span style="font-size: 28px; color: #e0e0e0;">Alternative: Strategic partnership or acqui-hire</span><br>
                         <span style="font-size: 28px; color: #e0e0e0;">Expected return: 10-50x</span>
                     </p>
                 </div>
@@ -810,25 +844,25 @@
         <div class="slide cta-slide">
             <h1>Join Us in Making Tech Accessible</h1>
             <p style="font-size: 36px; margin: 40px 0;">
-                Help us serve 2.2 billion people who deserve better technology
+                Help us serve 3+ billion people who deserve better technology
             </p>
             <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 1000px; margin: 60px auto;">
                 <div class="stat-box">
-                    <div class="stat-number">2.2B</div>
-                    <div class="stat-label">People Need This</div>
+                    <div class="stat-number">3B+</div>
+                    <div class="stat-label">Underserved Users</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">$42B</div>
-                    <div class="stat-label">Market Opportunity</div>
+                    <div class="stat-number">$1.3B</div>
+                    <div class="stat-label">Digital Accessibility Market</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">10-50x</div>
                     <div class="stat-label">Expected Return</div>
                 </div>
             </div>
-            <button class="cta-button">Let's Build an Accessible Future Together</button>
+            <button class="cta-button">Schedule a Meeting</button>
             <p style="margin-top: 40px; font-size: 24px; color: #666;">
-                hassan@youapps.co | youapps.co
+                hassan@youapps.co | youapps.co | calendly.com/youapps
             </p>
             <span class="slide-number">16 / 16</span>
         </div>
@@ -876,21 +910,18 @@
         const marketCtx = document.getElementById('marketChart');
         if (marketCtx) {
             new Chart(marketCtx.getContext('2d'), {
-                type: 'doughnut',
+                type: 'bar',
                 data: {
-                    labels: ['Accessibility Software Market', 'Our Initial Target (1%)', 'Current Market Share'],
+                    labels: ['Current Market (2024)', 'Projected Market (2030)', 'Total Assistive Tech Market'],
                     datasets: [{
-                        data: [42000, 420, 0.5],
+                        label: 'Market Size (USD)',
+                        data: [770, 1300, 27000],
                         backgroundColor: [
-                            'rgba(74, 144, 226, 0.3)',
+                            'rgba(74, 144, 226, 0.8)',
                             'rgba(74, 144, 226, 0.6)',
-                            'rgba(123, 104, 238, 0.8)'
+                            'rgba(74, 144, 226, 0.4)'
                         ],
-                        borderColor: [
-                            '#4A90E2',
-                            '#4A90E2',
-                            '#7B68EE'
-                        ],
+                        borderColor: '#4A90E2',
                         borderWidth: 2
                     }]
                 },
@@ -899,20 +930,35 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: '#ffffff',
-                                padding: 20,
-                                font: {
-                                    size: 16
-                                }
-                            }
+                            display: false
                         },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return context.label + ': $' + context.parsed + 'M';
+                                    return '$' + context.parsed.y + 'M';
                                 }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#ffffff',
+                                callback: function(value) {
+                                    return '$' + value + 'M';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffffff'
+                            },
+                            grid: {
+                                display: false
                             }
                         }
                     }
@@ -928,19 +974,20 @@
                 data: {
                     labels: ['Current', 'Q4 2025', 'Q2 2026', 'Q4 2026', 'Q2 2027', 'Q4 2027'],
                     datasets: [{
-                        label: 'Conservative MRR',
-                        data: [6.2, 15, 35, 60, 90, 120],
+                        label: 'Conservative Path',
+                        data: [2.5, 12, 25, 45, 75, 120],
                         borderColor: '#4A90E2',
                         backgroundColor: 'rgba(74, 144, 226, 0.1)',
                         tension: 0.4,
                         fill: true
                     }, {
-                        label: 'Realistic Growth',
-                        data: [6.2, 25, 75, 150, 300, 500],
+                        label: 'Aggressive Growth',
+                        data: [2.5, 20, 50, 120, 250, 500],
                         borderColor: '#7B68EE',
                         backgroundColor: 'rgba(123, 104, 238, 0.1)',
                         tension: 0.4,
-                        fill: true
+                        fill: true,
+                        borderDash: [5, 5]
                     }]
                 },
                 options: {
