@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Big Task - Privacy Policy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e8e8e8;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 48px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-bottom: 16px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        h2 .icon {
+            font-size: 1.3rem;
+        }
+        
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: #d0d0d0;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            color: #b0b0b0;
+        }
+        
+        ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            color: #b0b0b0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .highlight-box p {
+            color: #d0d0d0;
+            margin: 0;
+        }
+        
+        .privacy-shield {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .privacy-shield .shield-icon {
+            font-size: 2.5rem;
+        }
+        
+        .privacy-shield-text h4 {
+            color: #22c55e;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        
+        .privacy-shield-text p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        
+        .feature-item h4 {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            margin-bottom: 4px;
+        }
+        
+        .feature-item p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 40px;
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .last-updated {
+            font-size: 0.85rem;
+            color: #707070;
+            margin-top: 8px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px 16px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 24px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="app-icon">1️⃣</div>
+            <h1>1 Big Task</h1>
+            <p class="tagline">The Anti-To-Do App for Cognitive Relief</p>
+            <span class="badge">🔒 Privacy First</span>
+        </header>
+        
+        <section>
+            <h2><span class="icon">📱</span> About the App</h2>
+            <p>1 Big Task is designed to help you focus by showing only <strong>one task at a time</strong>. Instead of overwhelming you with endless lists, we help you concentrate on what matters right now.</p>
+            
+            <p>Built from the ground up for accessibility, 1 Big Task serves users with ADHD, autism, anxiety, low vision, dyslexia, and anyone who feels overwhelmed by traditional to-do apps.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="icon">🎯</div>
+                    <h4>One Task Focus</h4>
+                    <p>See only what matters now</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🎨</div>
+                    <h4>43 Themes</h4>
+                    <p>Accessibility-first design</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🎤</div>
+                    <h4>Voice Memos</h4>
+                    <p>Record when typing is hard</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🔊</div>
+                    <h4>Text-to-Speech</h4>
+                    <p>50+ languages supported</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2><span class="icon">🔒</span> Privacy Policy</h2>
+            
+            <div class="privacy-shield">
+                <div class="shield-icon">🛡️</div>
+                <div class="privacy-shield-text">
+                    <h4>We Do Not Collect Your Data</h4>
+                    <p>Your tasks, voice memos, and personal information never leave your devices.</p>
+                </div>
+            </div>
+            
+            <h3>Our Privacy Commitment</h3>
+            <p>1 Big Task is built with privacy as a core principle. We believe your tasks and personal information belong to you and only you.</p>
+            
+            <div class="highlight-box">
+                <p><strong>Simple truth:</strong> We have no servers. We have no databases. We have no way to see your data even if we wanted to.</p>
+            </div>
+            
+            <h3>Data Storage</h3>
+            <ul>
+                <li><strong>Local Storage:</strong> All your tasks, settings, and voice memos are stored locally on your device.</li>
+                <li><strong>iCloud Sync (Optional):</strong> If you enable cloud sync, your data syncs through <strong>your personal iCloud account</strong> — not our servers. Apple handles the encryption and security. We never have access to this data.</li>
+                <li><strong>No Account Required:</strong> You don't need to create an account or provide any personal information to use 1 Big Task.</li>
+            </ul>
+            
+            <h3>What We Don't Collect</h3>
+            <ul>
+                <li>❌ Your tasks or to-do items</li>
+                <li>❌ Voice memos or recordings</li>
+                <li>❌ Personal information (name, email, etc.)</li>
+                <li>❌ Usage analytics or behavior tracking</li>
+                <li>❌ Location data</li>
+                <li>❌ Device identifiers for advertising</li>
+                <li>❌ Any data that leaves your device to our servers</li>
+            </ul>
+            
+            <h3>iCloud Sync Explained</h3>
+            <p>When you enable iCloud sync (premium feature), here's what happens:</p>
+            <ul>
+                <li>Your tasks sync directly between your devices using <strong>your Apple iCloud account</strong></li>
+                <li>Data is encrypted by Apple using industry-standard security</li>
+                <li>We use Apple's CloudKit framework — the same secure infrastructure Apple uses for its own apps</li>
+                <li>We cannot access, read, or decrypt your synced data</li>
+                <li>If you delete the app or disable sync, you can remove all cloud data through your iCloud settings</li>
+            </ul>
+            
+            <h3>Third-Party Services</h3>
+            <ul>
+                <li><strong>Apple App Store:</strong> Handles purchases and subscriptions. Apple's privacy policy applies to transactions.</li>
+                <li><strong>Apple iCloud:</strong> Optional sync feature uses Apple's CloudKit. Apple's privacy policy applies.</li>
+            </ul>
+            <p>We do not use any third-party analytics, advertising networks, or data brokers.</p>
+            
+            <h3>Children's Privacy</h3>
+            <p>1 Big Task does not collect any personal information from anyone, including children. The app is safe for users of all ages.</p>
+            
+            <h3>Your Rights</h3>
+            <p>Since we don't collect your data, there's nothing for us to delete, export, or share. Your data is entirely under your control:</p>
+            <ul>
+                <li>Delete the app to remove all local data</li>
+                <li>Manage iCloud data through your device's Settings → Apple ID → iCloud</li>
+                <li>Disable iCloud sync anytime within the app</li>
+            </ul>
+            
+            <h3>Changes to This Policy</h3>
+            <p>If we ever change this privacy policy, we will update this page and the date below. Our commitment to not collecting your data will not change.</p>
+            
+            <h3>Contact Us</h3>
+            <p>If you have any questions about this privacy policy or the app, please contact us at:</p>
+            <p><strong>Email:</strong> support@youapps.co</p>
+        </section>
+        
+        <section>
+            <h2><span class="icon">♿</span> Accessibility</h2>
+            <p>1 Big Task is created by a legally blind developer who uses the app daily. Accessibility isn't an afterthought — it's the foundation.</p>
+            <ul>
+                <li><strong>VoiceOver:</strong> Fully optimized for screen reader users</li>
+                <li><strong>Dynamic Type:</strong> Supports all system text sizes</li>
+                <li><strong>High Contrast:</strong> Multiple themes designed for low vision</li>
+                <li><strong>Reduced Motion:</strong> Respects system accessibility settings</li>
+                <li><strong>Large Tap Targets:</strong> Easy to use for motor difficulties</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>Made with ❤️ by <a href="https://youapps.co">YouApps.co</a></p>
+            <p>Creating apps that put accessibility first.</p>
+            <p class="last-updated">Privacy Policy Last Updated: January 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
