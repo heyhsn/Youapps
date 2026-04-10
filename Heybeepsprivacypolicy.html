@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Hey Beeps</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink:       #AD1457;
+    --pink-light: #e8507a;
+    --bg:         #09090f;
+    --surface:    #111120;
+    --border:     #1e1e35;
+    --text:       #e8e8f0;
+    --muted:      #7070a0;
+    --accent-glow: rgba(173,20,87,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: 17px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Grain overlay ───────────────────────────────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── Glow blobs ──────────────────────────────────────────────────────────── */
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+  }
+  .blob-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #AD1457 0%, transparent 70%);
+    top: -200px; left: -200px;
+  }
+  .blob-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #3d1040 0%, transparent 70%);
+    bottom: 10%; right: -150px;
+  }
+
+  /* ── Layout ──────────────────────────────────────────────────────────────── */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+  }
+
+  /* ── Header ──────────────────────────────────────────────────────────────── */
+  header {
+    margin-bottom: 80px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  .app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 20px 8px 10px;
+    margin-bottom: 40px;
+  }
+
+  .app-badge .dot {
+    width: 28px; height: 28px;
+    background: var(--pink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  .app-badge span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--pink-light);
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .subtitle .sep { color: var(--border); }
+
+  /* ── Lead statement ──────────────────────────────────────────────────────── */
+  .lead {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--pink);
+    border-radius: 0 16px 16px 0;
+    padding: 28px 32px;
+    margin-bottom: 64px;
+    font-size: 18px;
+    color: var(--text);
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.2s ease forwards;
+  }
+
+  .lead strong { color: var(--pink-light); font-weight: 500; }
+
+  /* ── Sections ────────────────────────────────────────────────────────────── */
+  section {
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  section:nth-child(1) { animation-delay: 0.1s; }
+  section:nth-child(2) { animation-delay: 0.2s; }
+  section:nth-child(3) { animation-delay: 0.3s; }
+  section:nth-child(4) { animation-delay: 0.4s; }
+  section:nth-child(5) { animation-delay: 0.5s; }
+  section:nth-child(6) { animation-delay: 0.6s; }
+  section:nth-child(7) { animation-delay: 0.7s; }
+  section:nth-child(8) { animation-delay: 0.8s; }
+  section:nth-child(9) { animation-delay: 0.9s; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(24px, 4vw, 34px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+
+  p {
+    color: #a0a0c0;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* ── Highlight cards ─────────────────────────────────────────────────────── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .card:hover {
+    border-color: var(--pink);
+    transform: translateY(-3px);
+  }
+
+  .card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--accent-glow);
+    border: 1px solid rgba(173,20,87,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Divider ─────────────────────────────────────────────────────────────── */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 56px 0;
+  }
+
+  /* ── Inline highlight ────────────────────────────────────────────────────── */
+  .highlight {
+    display: inline-block;
+    background: var(--accent-glow);
+    border: 1px solid rgba(173,20,87,0.25);
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 14px;
+    color: var(--pink-light);
+    font-weight: 400;
+    margin: 2px 0;
+  }
+
+  /* ── List ────────────────────────────────────────────────────────────────── */
+  ul.policy-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+  }
+
+  ul.policy-list li {
+    position: relative;
+    padding-left: 24px;
+    color: #a0a0c0;
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+
+  ul.policy-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--pink);
+  }
+
+  /* ── Contact strip ───────────────────────────────────────────────────────── */
+  .contact-strip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 80px;
+  }
+
+  .contact-strip h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .contact-strip p { margin: 0; font-size: 14px; }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--pink);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .contact-btn:hover { background: var(--pink-light); transform: translateY(-2px); }
+
+  /* ── Footer ──────────────────────────────────────────────────────────────── */
+  footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer p { font-size: 13px; color: var(--muted); margin: 0; }
+  footer a { color: var(--pink-light); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── Scroll progress bar ─────────────────────────────────────────────────── */
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--pink);
+    z-index: 999;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* ── Animations ──────────────────────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ──────────────────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .page { padding: 48px 24px 80px; }
+    .contact-strip { flex-direction: column; align-items: flex-start; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<div class="page">
+
+  <!-- Header -->
+  <header>
+    <div class="app-badge">
+      <span class="dot">🔔</span>
+      <span>Hey Beeps</span>
+    </div>
+    <h1>Privacy<br><em>Policy</em></h1>
+    <div class="subtitle">
+      <span>YouApps.co</span>
+      <span class="sep">·</span>
+      <span>Effective: April 2026</span>
+      <span class="sep">·</span>
+      <span>Version 1.0</span>
+    </div>
+  </header>
+
+  <!-- Lead -->
+  <div class="lead">
+    <strong>The short version:</strong> Hey Beeps does not collect, store, transmit, or sell any personal information — ever. The app runs entirely on your device. No accounts. No tracking. No data leaves your phone.
+  </div>
+
+  <!-- Sections -->
+  <section>
+    <div class="section-label">01 — Overview</div>
+    <h2>We built this app to respect you</h2>
+    <p>
+      Hey Beeps is a simple audio reminder app. It plays a beep sound at scheduled intervals to help you stay mindful throughout your day. That's it. The app has no need for your personal information, and we have designed it from the ground up to operate without collecting any.
+    </p>
+    <p>
+      This Privacy Policy explains how Hey Beeps handles — or more accurately, does not handle — your data. We encourage you to read it in full, but the answer to almost every question is the same: we don't collect it.
+    </p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Zero Data Collected</h3>
+        <p>No personal information, usage statistics, or behavioural data is collected at any point.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📵</div>
+        <h3>No Internet Required</h3>
+        <p>The core app functions entirely offline. Your beeps work without a network connection.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <h3>Stays on Your Device</h3>
+        <p>All settings and preferences are stored locally on your device and never transmitted.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">02 — Data Collection</div>
+    <h2>Information we do not collect</h2>
+    <p>
+      Hey Beeps does not collect, process, or store any of the following:
+    </p>
+    <ul class="policy-list">
+      <li>Your name, email address, phone number, or any other contact information</li>
+      <li>Your location, GPS coordinates, or geographic information</li>
+      <li>Device identifiers, advertising IDs, or hardware fingerprints</li>
+      <li>Usage patterns, session duration, or in-app behaviour analytics</li>
+      <li>Crash reports or diagnostic data sent to our servers</li>
+      <li>Contacts, calendar entries, messages, or other device content</li>
+      <li>Camera, microphone, or media library access</li>
+      <li>Browsing history or activity outside the app</li>
+    </ul>
+    <p>
+      We do not use third-party analytics SDKs, advertising networks, or tracking libraries of any kind.
+    </p>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">03 — Local Storage</div>
+    <h2>What stays on your device</h2>
+    <p>
+      Hey Beeps saves a small set of preferences locally on your device using Android's standard SharedPreferences storage. This data never leaves your device and includes only:
+    </p>
+    <ul class="policy-list">
+      <li>Your chosen beep interval (hourly or 30-minute)</li>
+      <li>Your selected beep tone</li>
+      <li>Your optional schedule window (start time and end time)</li>
+      <li>Whether the schedule feature is enabled</li>
+      <li>Whether you have completed the onboarding flow</li>
+    </ul>
+    <p>
+      This information is stored using standard operating system mechanisms and is automatically removed when you uninstall the app. It is not backed up to any external server and is not accessible to us.
+    </p>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">04 — Permissions</div>
+    <h2>Why we request certain permissions</h2>
+    <p>
+      Hey Beeps requests only the minimum permissions necessary to deliver its core functionality. Here is a plain-language explanation of each:
+    </p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🔔</div>
+        <h3>Notifications</h3>
+        <p>Required on Android 13+ to schedule and deliver the audio beep sounds at your chosen times. We do not use this for marketing messages of any kind.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⏰</div>
+        <h3>Exact Alarms</h3>
+        <p>Allows the app to fire beeps precisely on the hour or half hour, even when the device is in a low-power state. No data is transmitted as part of this process.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔁</div>
+        <h3>Boot Completed</h3>
+        <p>Allows the app to reschedule your beeps after your device restarts. Android cancels all alarms on reboot; this permission restores them automatically.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📳</div>
+        <h3>Vibrate</h3>
+        <p>Used only for subtle haptic feedback during in-app interactions such as tapping the preview button. It is never used in conjunction with notifications.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 24px;">
+      None of these permissions grant us — or any third party — access to your personal data, files, contacts, location, or any other sensitive information.
+    </p>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">05 — Google Play Billing</div>
+    <h2>Subscription &amp; payments</h2>
+    <p>
+      If you choose to subscribe to Hey Beeps Premium, all payment processing is handled exclusively by Google Play Billing. We do not handle, see, or store your payment card details, billing address, or any financial information of any kind.
+    </p>
+    <p>
+      Google Play's handling of your payment information is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color: var(--pink-light);">Google's Privacy Policy</a>. The only information we receive from Google Play is a confirmation that a valid subscription is active or inactive for your Google account — no payment details are included in this signal.
+    </p>
+    <p>
+      Subscription status is verified directly with Google Play each time you open the app and is used solely to determine whether Premium features are available to you.
+    </p>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">06 — Security</div>
+    <h2>How we keep your data secure</h2>
+    <p>
+      The most secure data is data that is never collected. Because Hey Beeps does not collect or transmit personal information, there is no server-side database to breach, no credentials to steal, and no user profiles to expose.
+    </p>
+    <p>
+      All preferences stored locally on your device are protected by Android's built-in application sandboxing. Each app on Android runs in an isolated environment, meaning other apps cannot read Hey Beeps' local storage. If you use a screen lock or device encryption — which we strongly encourage — these preferences are encrypted at rest by your operating system automatically.
+    </p>
+    <ul class="policy-list">
+      <li>No external server stores any data associated with your use of Hey Beeps</li>
+      <li>All local data is protected by Android's application sandbox</li>
+      <li>Device encryption (if enabled) protects local preferences at rest</li>
+      <li>No network requests are made by the app except to verify subscription status with Google Play</li>
+      <li>We do not operate any backend infrastructure that holds user data</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">07 — Third Parties</div>
+    <h2>Third-party services</h2>
+    <p>
+      Hey Beeps does not integrate with any advertising networks, social platforms, analytics providers, or data brokers.
+    </p>
+    <p>
+      The only external service the app communicates with is <span class="highlight">Google Play Billing</span>, which is used to verify subscription status. This communication is handled by the Google Play system library on your device and is subject to Google's own privacy terms. No personal data is transmitted by Hey Beeps as part of this process.
+    </p>
+    <p>
+      We do not share, sell, rent, or trade your information with any third party under any circumstances.
+    </p>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">08 — Children</div>
+    <h2>Children's privacy</h2>
+    <p>
+      Hey Beeps is suitable for users of all ages. Because we do not collect any personal information from any user, we do not knowingly collect personal information from children under the age of 13 (or the applicable age in your jurisdiction).
+    </p>
+    <p>
+      If you are a parent or guardian and have concerns about your child's use of this app, please feel free to contact us. There is nothing to review or delete as no data is ever collected, but we are happy to answer any questions.
+    </p>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">09 — Your Rights</div>
+    <h2>Your rights &amp; choices</h2>
+    <p>
+      Because we do not collect personal data, there is no personal profile to access, correct, export, or delete on our end. However, you retain full control over everything stored locally on your device:
+    </p>
+    <ul class="policy-list">
+      <li><strong style="color: var(--text); font-weight: 500;">Access:</strong> Your settings are always visible and editable within the app itself</li>
+      <li><strong style="color: var(--text); font-weight: 500;">Deletion:</strong> Uninstalling the app removes all locally stored preferences permanently</li>
+      <li><strong style="color: var(--text); font-weight: 500;">Portability:</strong> There is no account data to export because no account exists</li>
+      <li><strong style="color: var(--text); font-weight: 500;">Permissions:</strong> You can revoke any permission granted to the app at any time through your device's Settings</li>
+    </ul>
+    <p>
+      If you are located in the European Economic Area, United Kingdom, or California, you have additional rights under GDPR, UK GDPR, and CCPA respectively. As we do not process any personal data, the obligations those regulations impose on data controllers do not apply to our processing — however, we remain committed to transparency and will respond to any inquiry promptly.
+    </p>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">10 — Policy Updates</div>
+    <h2>Changes to this policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. If we make material changes, we will update the effective date at the top of this page. Because we have no mechanism to contact you directly (we don't have your email address), we encourage you to check this page periodically.
+    </p>
+    <p>
+      Any changes will take effect immediately upon posting. Continued use of Hey Beeps after any changes constitutes your acceptance of the updated policy.
+    </p>
+  </section>
+
+  <!-- Contact strip -->
+  <div class="contact-strip">
+    <div>
+      <h3>Questions?</h3>
+      <p style="color: var(--muted);">We read every message. Usually reply within 48 hours.</p>
+    </div>
+    <a class="contact-btn" href="mailto:info@youapps.co">
+      ✉ &nbsp;info@youapps.co
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 YouApps.co — All rights reserved</p>
+    <p>
+      <a href="https://youapps.co" target="_blank" rel="noopener">youapps.co</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress  = (scrollTop / docHeight) * 100;
+    document.getElementById('progress').style.width = progress + '%';
+  });
+</script>
+
+</body>
+</html>
