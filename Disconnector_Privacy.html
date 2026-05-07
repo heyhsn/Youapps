@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Privacy Policy — Disconnector</title>
+<meta name="description" content="Disconnector's privacy policy. Disconnector runs entirely on your device. No accounts, no tracking, no servers. Read the full details." />
+<meta name="theme-color" content="#FAF8F3" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0F1115" media="(prefers-color-scheme: dark)" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg:           #FAF8F3;
+    --bg-elevated:  #FFFFFF;
+    --ink:          #1A1814;
+    --ink-2:        #54504A;
+    --ink-3:        #8A857C;
+    --line:         rgba(26, 24, 20, 0.08);
+    --line-strong:  rgba(26, 24, 20, 0.18);
+    --accent:       #1E3A2F;
+    --accent-soft:  #D8E2DB;
+    --accent-ink:   #FFFFFF;
+    --warn:         #B8543A;
+    --warn-soft:    #F4E4DE;
+    --chip:         #EFEBE2;
+
+    --display:  'Nunito', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --body:     'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --radius-card:   22px;
+    --radius-button: 99px;
+}
+
+[data-theme="dark"] {
+    --bg:           #0F1115;
+    --bg-elevated:  #181B22;
+    --ink:          #F0EEE7;
+    --ink-2:        #A6A195;
+    --ink-3:        #6B6758;
+    --line:         rgba(240, 238, 231, 0.08);
+    --line-strong:  rgba(240, 238, 231, 0.18);
+    --accent:       #B8C4A3;
+    --accent-soft:  #2A3325;
+    --accent-ink:   #1A1814;
+    --warn:         #E8906B;
+    --warn-soft:    #3A2620;
+    --chip:         #232730;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:           #0F1115;
+        --bg-elevated:  #181B22;
+        --ink:          #F0EEE7;
+        --ink-2:        #A6A195;
+        --ink-3:        #6B6758;
+        --line:         rgba(240, 238, 231, 0.08);
+        --line-strong:  rgba(240, 238, 231, 0.18);
+        --accent:       #B8C4A3;
+        --accent-soft:  #2A3325;
+        --accent-ink:   #1A1814;
+        --warn:         #E8906B;
+        --warn-soft:    #3A2620;
+        --chip:         #232730;
+    }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+    margin: 0;
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+a { color: var(--accent); font-weight: 600; }
+a:hover { text-decoration: underline; }
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: 0;
+    background: none;
+    color: inherit;
+}
+
+/* ---------- Top nav ---------- */
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.125rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.brand a { color: inherit; font-weight: inherit; }
+.brand a:hover { text-decoration: none; }
+
+.brand-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--accent);
+    display: grid;
+    place-items: center;
+    color: var(--accent-ink);
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    margin-left: auto;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.nav-links a {
+    color: var(--ink-2);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.theme-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--chip);
+    display: grid;
+    place-items: center;
+    color: var(--ink-2);
+    transition: background 0.2s, transform 0.15s;
+}
+
+.theme-toggle:hover {
+    background: var(--line-strong);
+    transform: scale(1.05);
+}
+
+.theme-toggle svg { width: 16px; height: 16px; }
+
+/* ---------- Layout ---------- */
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.policy-header {
+    padding: clamp(60px, 10vw, 110px) 0 40px;
+    text-align: center;
+}
+
+.policy-header .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: inline-block;
+    margin-bottom: 18px;
+}
+
+.policy-header h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 16px;
+    line-height: 1.1;
+}
+
+.policy-header p.lede {
+    font-size: 1.05rem;
+    color: var(--ink-2);
+    max-width: 50ch;
+    margin: 0 auto;
+}
+
+.last-updated {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-3);
+    margin-top: 18px;
+}
+
+/* ---------- Summary card ---------- */
+
+.tldr {
+    background: var(--accent-soft);
+    border-radius: var(--radius-card);
+    padding: clamp(28px, 4vw, 36px);
+    margin: 0 auto 50px;
+}
+
+.tldr h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    margin: 0 0 16px;
+}
+
+.tldr p {
+    color: var(--ink-2);
+    margin: 0 0 12px;
+    font-size: 0.97rem;
+}
+
+.tldr p:last-child {
+    margin-bottom: 0;
+}
+
+[data-theme="dark"] .tldr h2,
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .tldr h2 { color: var(--accent); }
+}
+
+[data-theme="dark"] .tldr p {
+    color: color-mix(in srgb, var(--ink) 80%, transparent);
+}
+
+/* ---------- Body sections ---------- */
+
+article {
+    padding-bottom: 80px;
+}
+
+article section {
+    margin-bottom: 44px;
+}
+
+article h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 16px;
+    padding-top: 8px;
+    line-height: 1.2;
+}
+
+article h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 26px 0 8px;
+    line-height: 1.3;
+}
+
+article p {
+    color: var(--ink-2);
+    font-size: 1rem;
+    margin: 0 0 14px;
+}
+
+article ul {
+    color: var(--ink-2);
+    font-size: 1rem;
+    padding-left: 20px;
+    margin: 0 0 16px;
+}
+
+article ul li {
+    margin-bottom: 8px;
+}
+
+article strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+article code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: var(--chip);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--ink);
+}
+
+/* ---------- Permission grid ---------- */
+
+.perm-grid {
+    display: grid;
+    gap: 12px;
+    margin: 14px 0 8px;
+}
+
+.perm {
+    background: var(--bg-elevated);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 18px;
+}
+
+.perm-name {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+    word-break: break-all;
+}
+
+.perm-explain {
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ---------- TOC ---------- */
+
+.toc {
+    background: var(--bg-elevated);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 0 0 50px;
+}
+
+.toc-title {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 12px;
+}
+
+.toc ol {
+    margin: 0;
+    padding-left: 22px;
+    color: var(--ink-2);
+    font-size: 0.95rem;
+}
+
+.toc ol li {
+    margin-bottom: 6px;
+}
+
+.toc ol a {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.toc ol a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0 60px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--ink-2);
+}
+
+.footer-links a {
+    color: var(--ink-2);
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.copyright {
+    margin-top: 18px;
+    font-size: 0.8rem;
+    color: var(--ink-3);
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     Top nav
+     ============================================================ -->
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="brand">
+            <a href="index.html" style="display: flex; align-items: center; gap: 10px;">
+                <div class="brand-mark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                        <path d="M2 12 L22 12" />
+                        <path d="M5 8 L19 8" />
+                        <path d="M8 16 L16 16" />
+                        <line x1="2" y1="2" x2="22" y2="22" />
+                    </svg>
+                </div>
+                Disconnector
+            </a>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#faq">FAQ</a>
+            <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="themeIcon">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- ============================================================
+     Header
+     ============================================================ -->
+<header class="policy-header">
+    <div class="container">
+        <span class="eyebrow">Privacy Policy</span>
+        <h1>How Disconnector handles your data.</h1>
+        <p class="lede">Mostly by not handling it. This document explains what Disconnector does on your phone, what permissions it uses, and what we do — and don't — collect.</p>
+        <div class="last-updated">Last updated: [DATE]</div>
+    </div>
+</header>
+
+<!-- ============================================================
+     Body
+     ============================================================ -->
+<main class="container">
+
+    <!-- Plain-language summary -->
+    <div class="tldr">
+        <h2>The short version</h2>
+        <p><strong>Disconnector runs entirely on your phone.</strong> There is no Disconnector server. There is no account. There is no login. We don't collect, store, or transmit any information about you, your device, or your behavior.</p>
+        <p>Disconnector uses Android's VPN system to cut internet for the apps you choose, but the "VPN" is local — it never connects out. Packets are dropped right on your device.</p>
+        <p>Everything you set up — which apps you've quieted, your schedules, your passcode — stays on your phone in Android's standard app storage. If you uninstall Disconnector, all of it is gone.</p>
+    </div>
+
+    <!-- Table of contents -->
+    <div class="toc">
+        <div class="toc-title">In this policy</div>
+        <ol>
+            <li><a href="#who">Who runs Disconnector</a></li>
+            <li><a href="#what-we-collect">What information we collect</a></li>
+            <li><a href="#permissions">Android permissions and what they do</a></li>
+            <li><a href="#vpn-explained">The "VPN" — what it is and isn't</a></li>
+            <li><a href="#data-on-device">Data stored on your device</a></li>
+            <li><a href="#third-parties">Third parties</a></li>
+            <li><a href="#children">Children</a></li>
+            <li><a href="#your-rights">Your rights</a></li>
+            <li><a href="#changes">Changes to this policy</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ol>
+    </div>
+
+    <article>
+
+        <!-- 1 -->
+        <section id="who">
+            <h2>1. Who runs Disconnector</h2>
+            <p>Disconnector is published and operated by <strong>[YOUR NAME / COMPANY]</strong> ("we", "us", "our"). Disconnector is the Android application identified on the Google Play Store under the package <code>[YOUR PACKAGE NAME]</code>.</p>
+            <p>For privacy questions, contact us at <a href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a>.</p>
+        </section>
+
+        <!-- 2 -->
+        <section id="what-we-collect">
+            <h2>2. What information we collect</h2>
+            <p><strong>Nothing.</strong> Disconnector does not collect, store, transmit, or share any personal information.</p>
+
+            <h3>What this means in practice</h3>
+            <ul>
+                <li>We do not have a server. There is no infrastructure that could collect data about you, even if we wanted to.</li>
+                <li>We do not have user accounts. You don't sign up. There is no email, username, or password to give us.</li>
+                <li>We do not use analytics or telemetry SDKs. There is no integration with Firebase Analytics, Google Analytics, Crashlytics, Mixpanel, or any similar service.</li>
+                <li>We do not use advertising SDKs. Disconnector contains no ads and no advertising frameworks.</li>
+                <li>We do not send crash reports off your device. If Disconnector crashes, you can report it via your normal Google Play feedback channel — that's between you and Google.</li>
+                <li>We do not track which apps you install, which apps you choose to quiet, when your schedules fire, how long you disconnect for, or anything else about how you use Disconnector.</li>
+            </ul>
+        </section>
+
+        <!-- 3 -->
+        <section id="permissions">
+            <h2>3. Android permissions and what they do</h2>
+            <p>Disconnector requests the following Android permissions. Each is used <strong>only</strong> for the purpose described, and none of these permissions cause any data to leave your device.</p>
+
+            <div class="perm-grid">
+
+                <div class="perm">
+                    <span class="perm-name">android.permission.BIND_VPN_SERVICE</span>
+                    <p class="perm-explain">Required to operate the per-app VPN that cuts the internet for selected apps. Granted by you via Android's "Connection request" consent dialog. The VPN never connects out — packets from the apps you've selected are dropped locally on your device.</p>
+                </div>
+
+                <div class="perm">
+                    <span class="perm-name">FOREGROUND_SERVICE / FOREGROUND_SERVICE_SPECIAL_USE</span>
+                    <p class="perm-explain">Required by Android to keep the VPN service running while disconnects are active. Causes the persistent "Apps quieted" notification you see in your status bar — that notification is a system requirement for foreground services, not a tracking mechanism.</p>
+                </div>
+
+                <div class="perm">
+                    <span class="perm-name">POST_NOTIFICATIONS</span>
+                    <p class="perm-explain">Used to display the persistent VPN-active notification and the optional "quiet hours started/ended" notifications when a schedule fires. You can deny this and Disconnector will still work; you'll just see less feedback.</p>
+                </div>
+
+                <div class="perm">
+                    <span class="perm-name">SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM</span>
+                    <p class="perm-explain">Required to fire your schedules at the exact times you set, even when your phone is idle. Used only to trigger your own configured schedules. Disconnector does not set any other alarms.</p>
+                </div>
+
+                <div class="perm">
+                    <span class="perm-name">RECEIVE_BOOT_COMPLETED</span>
+                    <p class="perm-explain">Required to re-arm your schedule alarms after the phone reboots. Without this, your schedules would silently stop firing after every restart. Disconnector does not auto-start the VPN at boot — only the schedule alarms are restored.</p>
+                </div>
+
+                <div class="perm">
+                    <span class="perm-name">QUERY_ALL_PACKAGES</span>
+                    <p class="perm-explain">Required to read the list of apps installed on your phone, so the Apps tab can show real apps with real icons and names rather than a generic catalog. The list of apps you have installed is read locally and never sent off your device.</p>
+                </div>
+
+                <div class="perm">
+                    <span class="perm-name">USE_BIOMETRIC</span>
+                    <p class="perm-explain">Used only if you choose to enable biometric unlock for the optional in-app Lock feature. Biometric authentication is performed entirely by Android — Disconnector never sees or stores your fingerprint or face data. We only receive a yes/no result from the system.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4 -->
+        <section id="vpn-explained">
+            <h2>4. The "VPN" — what it is and isn't</h2>
+            <p>Disconnector uses Android's <code>VpnService</code> API because that's the only mechanism Android offers for per-app network control. This is the same API used by every legitimate VPN app, but Disconnector uses it differently.</p>
+            <p><strong>What Disconnector's "VPN" does:</strong></p>
+            <ul>
+                <li>Marks the apps you've selected as routed through a local virtual network interface.</li>
+                <li>Reads the network packets those apps generate.</li>
+                <li>Discards them. That's the entire mechanism.</li>
+            </ul>
+            <p><strong>What Disconnector's "VPN" does <em>not</em> do:</strong></p>
+            <ul>
+                <li>It does not connect to any server, anywhere. There is no "tunnel" out.</li>
+                <li>It does not encrypt or proxy your traffic.</li>
+                <li>It does not inspect, log, store, or transmit your traffic.</li>
+                <li>It does not affect any apps other than the ones you've selected.</li>
+                <li>It does not affect any traffic when no disconnect is active.</li>
+            </ul>
+            <p>If a fully offline phone could "feel" disconnected from the world, that's the closest analogy: Disconnector creates that experience for the specific apps you choose, while everything else continues to work normally.</p>
+        </section>
+
+        <!-- 5 -->
+        <section id="data-on-device">
+            <h2>5. Data stored on your device</h2>
+            <p>Disconnector stores the following information on your phone, in Android's standard private app storage. This data is accessible only to Disconnector and is removed when you uninstall the app.</p>
+            <ul>
+                <li><strong>App selections.</strong> Which apps you've added to your quiet list.</li>
+                <li><strong>Schedules.</strong> The recurring quiet windows you've configured (start time, end time, days of the week, name, on/off state).</li>
+                <li><strong>Session history.</strong> Start and end timestamps of completed disconnect sessions, used to compute the weekly chart and lifetime hours on the Stats tab. Session durations are stored, not what you did during them.</li>
+                <li><strong>Theme preference.</strong> Whether you've chosen Paper, Midnight, or System theme.</li>
+                <li><strong>Onboarding state.</strong> A boolean flag indicating whether you've completed the initial setup, so we don't show it to you twice.</li>
+                <li><strong>Lock settings.</strong> If you've enabled the optional in-app Lock, Disconnector stores your 4-digit passcode and your biometric-on-or-off preference. <em>The passcode is currently stored as plain text in private app storage; we plan to move it into the Android Keystore in a future release.</em></li>
+            </ul>
+            <p>None of this data is transmitted off your device.</p>
+        </section>
+
+        <!-- 6 -->
+        <section id="third-parties">
+            <h2>6. Third parties</h2>
+            <p>Disconnector does not integrate with any third-party data-collection service. Specifically, the app does not contain SDKs from:</p>
+            <ul>
+                <li>Google Analytics, Firebase Analytics, or any analytics provider</li>
+                <li>Crashlytics, Bugsnag, Sentry, or any crash-reporting service</li>
+                <li>Facebook SDK, AppLovin, AdMob, or any advertising network</li>
+                <li>Mixpanel, Amplitude, Segment, or any product-analytics service</li>
+                <li>Any social-media SDK</li>
+            </ul>
+            <p>The only third party involved in Disconnector's distribution is <strong>Google Play</strong>, which handles the download and installation. Google Play's data practices are governed by Google's own privacy policy, not this one.</p>
+        </section>
+
+        <!-- 7 -->
+        <section id="children">
+            <h2>7. Children</h2>
+            <p>Disconnector does not knowingly collect any personal information from anyone, including children under 13 (or the equivalent minimum age in your jurisdiction). Because we do not collect any personal information at all, we have nothing to delete or to protect on a per-user basis.</p>
+            <p>The app is suitable for use by minors with parental guidance, but is not specifically directed at children.</p>
+        </section>
+
+        <!-- 8 -->
+        <section id="your-rights">
+            <h2>8. Your rights</h2>
+            <p>Various privacy laws around the world (including the EU's GDPR, the UK's UK GDPR, California's CCPA/CPRA, and similar frameworks elsewhere) grant you specific rights over your personal information — to access it, correct it, delete it, port it, or object to its processing.</p>
+            <p>Because Disconnector does not collect or hold any personal information about you, there is nothing for us to access, correct, delete, port, or object to processing. Your data lives only on your device, where you have full control over it via Android's normal app-data tools.</p>
+            <p>To delete everything Disconnector has stored: <strong>Android Settings → Apps → Disconnector → Storage → Clear data</strong> (or simply uninstall).</p>
+            <p>If you have a question about your rights under a specific privacy law as applied to Disconnector, contact us at <a href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a>.</p>
+        </section>
+
+        <!-- 9 -->
+        <section id="changes">
+            <h2>9. Changes to this policy</h2>
+            <p>We may update this policy occasionally — for example, if Disconnector adds a new permission, integrates with a new platform feature, or if applicable laws change. The "Last updated" date at the top of this page reflects the most recent revision.</p>
+            <p>If we ever make a change that materially affects what data Disconnector collects or transmits — which would be a fundamental departure from how the app currently works — we'll surface a notice in-app the next time you open Disconnector, not just bury it in this document.</p>
+        </section>
+
+        <!-- 10 -->
+        <section id="contact">
+            <h2>10. Contact</h2>
+            <p>For privacy-related questions, concerns, or requests:</p>
+            <p>
+                Email: <a href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a><br/>
+                Developer: <strong>[YOUR NAME / COMPANY]</strong>
+            </p>
+            <p>We aim to respond within seven business days.</p>
+        </section>
+
+    </article>
+
+</main>
+
+<!-- ============================================================
+     Footer
+     ============================================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="mailto:[YOUR EMAIL]">Contact</a>
+        </div>
+        <div class="copyright">
+            © <span id="year">2025</span> [YOUR NAME / COMPANY]
+        </div>
+    </div>
+</footer>
+
+<script>
+    // -------- Theme toggle --------
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+
+    const sunIcon = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+    const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+    function applyIcon() {
+        const dark = root.getAttribute('data-theme') === 'dark' ||
+            (!root.hasAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+        icon.innerHTML = dark ? sunIcon : moonIcon;
+    }
+
+    const stored = localStorage.getItem('disconnector-theme');
+    if (stored) root.setAttribute('data-theme', stored);
+    applyIcon();
+
+    toggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') ||
+            (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('disconnector-theme', next);
+        applyIcon();
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
