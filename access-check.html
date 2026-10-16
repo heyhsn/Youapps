@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Access Check | Powerbase Access Academy</title>
+<meta name="description" content="A 16-question self-assessment of how accessible and inclusive your organisation is across spaces, tools, people and career development.">
+<style>
+:root{--navy:#07264d;--teal:#007e83;--cyan:#03adba;--gold:#ffca34;--ink:#18334b;--muted:#4c6275;--pale:#edf8f8;--line:#dce6eb;--error:#b3261e}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:105px}
+body{margin:0;font:17px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:white}
+a{overflow-wrap:anywhere;color:var(--teal);text-underline-offset:4px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #d18b00;outline-offset:4px}
+h1,h2,h3{color:var(--navy);line-height:1.15;letter-spacing:-.025em}
+h1{font-size:clamp(34px,4.5vw,58px);margin:14px 0 20px}
+h2{font-size:clamp(26px,3vw,38px);margin:12px 0 18px}
+h3{font-size:22px;margin:0 0 10px}
+p{margin:0 0 18px}
+header{position:sticky;top:0;z-index:10;background:#ffffffed;border-bottom:1px solid #dce8ee;backdrop-filter:blur(12px)}
+nav{max-width:1200px;margin:auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{width:140px;height:74px;object-fit:contain}
+nav a.back{text-decoration:none;font-size:14px;font-weight:650;color:var(--navy)}
+.btn{display:inline-block;background:var(--teal);color:white;border:0;border-radius:6px;padding:13px 22px;font:inherit;font-weight:650;text-decoration:none;cursor:pointer}
+.btn.secondary{background:white;color:var(--navy);border:1px solid #aec6cf}
+.btn[disabled]{opacity:.6;cursor:wait}
+.buttons{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 0}
+.wrap{max-width:860px;margin:auto;padding:56px 28px}
+.eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:750;color:var(--teal)}
+.hero{background:linear-gradient(130deg,#f0faf9,white)}
+.hero p{font-size:19px;max-width:640px}
+.hero-aside{border-left:4px solid var(--gold);padding-left:24px;margin-top:28px;font-size:16px}
+.note{font-size:14px;color:var(--muted)}
+.section-head{padding:18px 22px;background:var(--pale);border-radius:8px;margin:44px 0 24px}
+.section-head h2{margin:0 0 6px;font-size:26px}
+.section-head p{margin:0;color:var(--muted);font-size:16px}
+fieldset{border:0;border-bottom:1px solid var(--line);margin:0 0 22px;padding:0 0 22px;min-width:0}
+legend{font-weight:650;padding:0 0 12px;font-size:17px}
+.options{display:flex;gap:12px;flex-wrap:wrap}
+.options label{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#f4f7f9;border:1px solid transparent;border-radius:6px;font-size:15px;cursor:pointer}
+.options label:has(input:checked){background:#e2f3f3;border-color:var(--teal)}
+.options input{accent-color:var(--teal);width:20px;height:20px;margin:0}
+fieldset.invalid{border-left:4px solid var(--error);padding-left:14px}
+.field{margin:0 0 20px}
+.field label{display:block;font-weight:650;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;font:inherit;padding:12px 14px;border:1px solid #aec6cf;border-radius:6px;background:white;color:var(--ink)}
+.field textarea{min-height:110px;resize:vertical}
+.field .hint{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
+.field.invalid input,.field.invalid textarea{border-color:var(--error)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:15px;padding:16px;border:1px solid var(--line);border-radius:8px}
+.consent input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--teal);flex:none}
+.error-summary{display:none;border:2px solid var(--error);border-radius:8px;padding:18px 22px;margin:0 0 28px;background:#fff7f6}
+.error-summary.show{display:block}
+.error-summary h2{color:var(--error);font-size:20px;margin:0 0 10px}
+.error-summary ul{margin:0;padding-left:20px}
+.error-msg{color:var(--error);font-size:14px;font-weight:650;margin:8px 0 0}
+.results{display:none;margin-top:36px}
+.results.show{display:block}
+.snapshot{padding:28px;background:var(--navy);color:#e5edf4;border-radius:18px}
+.snapshot h2{color:white;margin:0 0 8px}
+.snapshot .eyebrow{color:#60d9df}
+.score{font-size:clamp(44px,7vw,72px);font-weight:750;color:white;line-height:1.1;margin:10px 0 4px}
+.score small{font-size:.4em;font-weight:600;color:#aecfe0}
+.band{display:inline-block;background:var(--gold);color:var(--navy);font-weight:750;padding:6px 14px;border-radius:6px;margin:6px 0 16px}
+.areas{margin-top:22px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.areas table{width:100%;border-collapse:collapse}
+.areas th,.areas td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
+.areas thead th{background:var(--pale);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.areas tbody tr:last-child td,.areas tbody tr:last-child th{border-bottom:0}
+.bar{height:8px;background:#e2ebee;border-radius:4px;overflow:hidden;margin-top:6px}
+.bar span{display:block;height:100%;background:var(--teal)}
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.card{padding:20px;border:1px solid var(--line);border-radius:12px}
+.card h3{font-size:16px;color:var(--teal);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.card p{margin:0}
+.status{margin-top:18px;font-size:15px}
+.status.ok{color:var(--teal)}.status.fail{color:var(--error)}
+footer{padding:25px 28px;text-align:center;font-size:14px;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:10px;top:10px;z-index:100;background:white;padding:10px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media(max-width:650px){.wrap{padding:40px 20px}nav{padding:8px 18px}.logo{width:110px;height:62px}.options{flex-direction:column}.grid2,.summary{grid-template-columns:1fr}.snapshot{padding:22px}.areas th,.areas td{padding:10px 8px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{header,.buttons,form .btn,.status{display:none}.wrap{padding:20px}.results{display:block}.snapshot{color:var(--navy);background:white;border:2px solid var(--navy)}.snapshot h2,.score{color:var(--navy)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <nav aria-label="Site">
+    <a href="index.html" aria-label="Powerbase Access Academy home"><img class="logo" src="logo.jpg" alt="Powerbase Access Academy. Human Potential Without Barriers."></a>
+    <a class="back" href="index.html">Back to main site</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Powerbase Access Academy Access Check</p>
+    <h1>How accessible and inclusive is your organisation?</h1>
+    <p>This short self-assessment explores how your organisation enables people with different needs to participate, contribute, develop and progress. Answer based on current practice, rather than intentions. There are no right or wrong answers.</p>
+    <p class="hero-aside">16 questions. Four areas. Your Access Snapshot appears on screen as soon as you submit, and a copy goes to Powerbase so we can follow up with you.</p>
+    <p class="note">Choose “Don’t know” where you do not have enough information. This is a self-reflection tool, not an audit or certification.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <form id="check" novalidate>
+    <div class="error-summary" id="errors" role="alert" tabindex="-1">
+      <h2>Please check the following</h2>
+      <ul id="error-list"></ul>
+    </div>
+
+    <div class="section-head">
+      <h2>About you</h2>
+      <p>So we can send your snapshot and follow up on next steps.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="field" data-field="name">
+        <label for="name">Full name <span aria-hidden="true">*</span></label>
+        <input id="name" name="name" type="text" autocomplete="name" required aria-required="true">
+      </div>
+      <div class="field" data-field="company">
+        <label for="company">Company / organisation <span aria-hidden="true">*</span></label>
+        <input id="company" name="company" type="text" autocomplete="organization" required aria-required="true">
+      </div>
+      <div class="field" data-field="email">
+        <label for="email">Work email <span aria-hidden="true">*</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-required="true">
+      </div>
+      <div class="field" data-field="phone">
+        <label for="phone">Phone number <span aria-hidden="true">*</span></label>
+        <span class="hint" id="phone-hint">Include your country code, for example +971 50 123 4567</span>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="phone-hint" required aria-required="true">
+      </div>
+      <div class="field">
+        <label for="role">Job title or role</label>
+        <input id="role" name="role" type="text" autocomplete="organization-title">
+      </div>
+      <div class="field">
+        <label for="size">Organisation size</label>
+        <select id="size" name="size">
+          <option value="">Prefer not to say</option>
+          <option>1 to 50</option>
+          <option>51 to 250</option>
+          <option>251 to 1,000</option>
+          <option>1,001 to 5,000</option>
+          <option>More than 5,000</option>
+        </select>
+      </div>
+    </div>
+    <div class="hp" aria-hidden="true"><label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <div id="questions"></div>
+
+    <div class="section-head">
+      <h2>Your commitment</h2>
+      <p>Optional, but it makes the snapshot far more useful.</p>
+    </div>
+    <div class="field">
+      <label for="action">One practical action you could take in the next 30 days</label>
+      <textarea id="action" name="action"></textarea>
+    </div>
+
+    <div class="field" data-field="consent">
+      <label class="consent" for="consent">
+        <input id="consent" name="consent" type="checkbox" required aria-required="true">
+        <span>I agree that Powerbase Access Academy may store my responses and contact me about my Access Snapshot and related programmes. <span aria-hidden="true">*</span></span>
+      </label>
+    </div>
+
+    <div class="buttons">
+      <button class="btn" type="submit" id="submit">See my Access Snapshot</button>
+      <button class="btn secondary" type="reset">Clear all answers</button>
+    </div>
+  </form>
+
+  <div class="results" id="results" tabindex="-1" aria-labelledby="results-title"></div>
+</section>
+</main>
+
+<footer>Powerbase Access Academy. Human Potential Without Barriers.</footer>
+
+<script>
+/* ============================================================
+   CONFIG: paste your Google Apps Script web app URL here.
+   Leave empty while testing; results still display on screen.
+   ============================================================ */
+const CONFIG = {
+  endpoint: "https://script.google.com/macros/s/AKfycbxt1lynaSjzZeeL0AGrjogC0yyQUzJhzzVQmm8E-TDcu4dccZ__qsQpFxR7pp0N_sUjaQ/exec",
+  followUpEmail: "Power base Access Team"
+};
+
+const SECTIONS = [
+  { name: "Spaces", lead: "Can people access, navigate and participate in our environments?", q: [
+    "Our physical environments are accessible to people with different mobility and sensory needs.",
+    "Our meeting, learning and event spaces enable people with different needs to participate comfortably.",
+    "Accessibility is considered when we design or modify employee and customer environments.",
+    "We consider factors such as lighting, noise, signage, navigation and sensory load."
+  ]},
+  { name: "Tools", lead: "Can people use our technology, information and communication?", q: [
+    "Accessibility is considered when we select websites, apps, software and digital tools.",
+    "Important documents, presentations and communications are designed to be easy to access and understand.",
+    "People can access assistive technology or accessibility features when they need them.",
+    "We test whether our digital systems and information work effectively for people with different needs."
+  ]},
+  { name: "People", lead: "Do our leadership, culture and behaviours enable inclusion?", q: [
+    "Our leaders understand the role accessibility plays in inclusion and performance.",
+    "People would feel comfortable raising an accessibility barrier or asking for support.",
+    "Accessibility is considered in recruitment, onboarding, communication, learning and development.",
+    "People with lived experience are involved when accessibility improvements are being considered."
+  ]},
+  { name: "Career Development & Progression", lead: "Can people develop their capabilities and progress without avoidable barriers?", q: [
+    "Employees with disabilities / People of Determination have career conversations that explore their strengths, aspirations and development needs.",
+    "Learning, mentoring, coaching and stretch opportunities are accessible to employees with different needs, with adjustments available where required.",
+    "Promotion and progression decisions use clear, fair criteria and consider how barriers or assumptions may affect employees with different needs.",
+    "We review whether employees with disabilities / People of Determination can access development and progression opportunities, and act on barriers identified."
+  ]}
+];
+const OPTIONS = [["Yes, consistently",3],["Partly, sometimes",2],["Not yet",1],["Don’t know",0]];
+const SECTION_BANDS = [[3,"Starting","Establish visibility of barriers and identify first actions."],[6,"Developing","Build foundations and turn intentions into practical routines."],[9,"Progressing","Strengthen consistency and address remaining gaps."],[12,"Embedded","Reported practices are largely established; verify impact and continue improving."]];
+const OVERALL_BANDS = [
+  [18,"Starting","Your responses indicate an early stage of establishing accessible, inclusive practice, or limited visibility of what is in place. Start by identifying barriers and agreeing practical priorities."],
+  [28,"Developing","Some foundations are in place. Focus on making practice consistent across spaces, tools, people and career development."],
+  [39,"Progressing","Your responses indicate meaningful progress. Use the section scores to target remaining gaps and involve people with lived experience in improvements."],
+  [48,"Embedded","Your responses suggest broadly established practice. Check that people experience the intended benefits, address weaker sections and sustain progress."]
+];
+
+/* Build the questions */
+const qWrap = document.getElementById("questions");
+let n = 0;
+SECTIONS.forEach((s, si) => {
+  const head = document.createElement("div");
+  head.className = "section-head";
+  head.innerHTML = `<h2>${"ABCD"[si]}. ${s.name}</h2><p>${s.lead}</p>`;
+  qWrap.appendChild(head);
+  s.q.forEach(text => {
+    const id = "q" + n;
+    const fs = document.createElement("fieldset");
+    fs.dataset.field = id;
+    fs.innerHTML = `<legend>${n + 1}. ${text}</legend><div class="options">` +
+      OPTIONS.map(([label, pts], oi) =>
+        `<label><input type="radio" name="${id}" value="${pts}" id="${id}-${oi}">${label}</label>`).join("") +
+      `</div>`;
+    qWrap.appendChild(fs);
+    n++;
+  });
+});
+
+const form = document.getElementById("check");
+const out = document.getElementById("results");
+const errBox = document.getElementById("errors");
+const errList = document.getElementById("error-list");
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function band(table, v){ for (const b of table) if (v <= b[0]) return b; return table[table.length-1]; }
+
+function validate(fd){
+  const errors = [];
+  document.querySelectorAll(".invalid").forEach(e => e.classList.remove("invalid"));
+  document.querySelectorAll(".error-msg").forEach(e => e.remove());
+  const need = (key, msg, test) => {
+    if (!test) {
+      errors.push([key, msg]);
+      const el = document.querySelector(`[data-field="${key}"]`);
+      if (el) {
+        el.classList.add("invalid");
+        const m = document.createElement("p"); m.className = "error-msg"; m.id = key + "-err"; m.textContent = msg;
+        el.appendChild(m);
+        const input = el.querySelector("input,textarea,select");
+        if (input) input.setAttribute("aria-describedby", m.id);
+      }
+    }
+  };
+  need("name", "Enter your full name.", fd.get("name").trim());
+  need("company", "Enter your company or organisation.", fd.get("company").trim());
+  need("email", "Enter a valid work email address.", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fd.get("email").trim()));
+  need("phone", "Enter a phone number with at least 7 digits.", (fd.get("phone").replace(/\D/g,"").length >= 7));
+  for (let i = 0; i < 16; i++) need("q" + i, "Choose one answer for question " + (i + 1) + ".", fd.get("q" + i) !== null);
+  need("consent", "Tick the box to confirm you agree to be contacted.", fd.get("consent"));
+  return errors;
+}
+
+function score(fd){
+  const a = Array.from({length:16}, (_, i) => Number(fd.get("q" + i)));
+  const total = a.reduce((x, y) => x + y, 0);
+  const unknown = a.filter(x => x === 0).length;
+  const sections = SECTIONS.map((s, i) => {
+    const vals = a.slice(i*4, i*4+4);
+    const sc = vals.reduce((x, y) => x + y, 0);
+    const u = vals.filter(x => x === 0).length;
+    const b = band(SECTION_BANDS, sc);
+    return { name: s.name, score: sc, unknown: u, rating: u === 4 ? "Insufficient visibility" : b[1], next: u === 4 ? "Build visibility of what is in place before rating this area." : b[2] };
+  });
+  const ob = band(OVERALL_BANDS, total);
+  return { answers: a, total, unknown, sections, rating: unknown === 16 ? "Insufficient visibility" : ob[1], feedback: unknown === 16 ? "Every answer was “Don’t know”. The first step is to find out what is in place; the score does not mean the organisation is inaccessible." : ob[2] };
+}
+
+function render(r, fd){
+  const rated = r.sections.filter(s => s.unknown < 4);
+  const max = rated.length ? Math.max(...rated.map(s => s.score)) : null;
+  const min = rated.length ? Math.min(...rated.map(s => s.score)) : null;
+  const strongest = rated.filter(s => s.score === max).map(s => s.name).join(", ") || "Not enough visibility to say";
+  const priority = rated.filter(s => s.score === min).map(s => s.name).join(", ") || "Build visibility first";
+  const gaps = r.sections.filter(s => s.unknown > 0).map(s => `${s.name} (${s.unknown}/4)`).join(", ");
+  const rows = r.sections.map(s => `<tr><th scope="row">${esc(s.name)}<div class="bar" aria-hidden="true"><span style="width:${Math.round(s.score/12*100)}%"></span></div></th><td>${s.score}/12</td><td>${esc(s.rating)}<br><span class="note">${esc(s.next)}</span></td><td>${s.unknown}/4</td></tr>`).join("");
+  out.innerHTML = `
+    <div class="snapshot">
+      <p class="eyebrow">Your Access Snapshot</p>
+      <h2 id="results-title">${esc(fd.get("company").trim())}</h2>
+      <p class="score">${r.total}<small> / 48</small></p>
+      <span class="band">${esc(r.rating)}</span>
+      <p>${esc(r.feedback)}</p>
+      <p style="margin:0">Visibility gaps: ${r.unknown} of 16 answers were “Don’t know”. These indicate where information is missing, not confirmed absence of practice.</p>
+    </div>
+    <div class="areas"><table><caption class="skip">Scores and visibility gaps by area</caption>
+      <thead><tr><th scope="col">Area</th><th scope="col">Score</th><th scope="col">Rating and next step</th><th scope="col">Don’t know</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>
+    <div class="summary">
+      <div class="card"><h3>Strongest area</h3><p>${esc(strongest)}</p></div>
+      <div class="card"><h3>Priority for exploration</h3><p>${esc(priority)}${gaps ? `<br><span class="note">Visibility gaps to check: ${esc(gaps)}</span>` : ""}</p></div>
+      <div class="card" style="grid-column:1/-1"><h3>Your 30-day action</h3><p>${esc(fd.get("action").trim()) || "<em>None recorded yet. Pick one small, visible step and tell us about it.</em>"}</p></div>
+    </div>
+    <p class="note" style="margin-top:18px">Scores: Yes = 3; Partly = 2; Not yet = 1; Don’t know = 0. All 16 questions carry equal weight. These practical reflection bands are not validated benchmarks, an audit or certification. An overall result can hide a weaker area, so look at all four.</p>
+    <p class="status" id="status" role="status"></p>
+    <div class="buttons">
+      <a class="btn" href="mailto:${CONFIG.followUpEmail}?subject=${encodeURIComponent("Discuss my Access Snapshot: " + fd.get("company").trim())}">Discuss your next steps</a>
+      <button class="btn secondary" type="button" onclick="window.print()">Print or save as PDF</button>
+    </div>`;
+  out.classList.add("show");
+  out.focus();
+}
+
+async function send(payload){
+  const status = document.getElementById("status");
+  if (!CONFIG.endpoint) { status.textContent = "Test mode: this snapshot was not sent anywhere."; return; }
+  status.textContent = "Saving your snapshot…";
+  try {
+    const res = await fetch(CONFIG.endpoint, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) });
+    const j = await res.json().catch(() => ({}));
+    if (res.ok && j.ok !== false) { status.className = "status ok"; status.textContent = "Saved. Powerbase will be in touch about your next steps."; }
+    else throw new Error(j.error || res.statusText);
+  } catch (e) {
+    status.className = "status fail";
+    status.textContent = "Your snapshot is shown above but could not be saved automatically. Please use the Discuss button so we have your details.";
+  }
+}
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const fd = new FormData(form);
+  if (fd.get("website")) return; /* honeypot */
+  const errors = validate(fd);
+  if (errors.length) {
+    errList.innerHTML = errors.map(([k, m]) => `<li><a href="#${k.startsWith("q") ? k + "-0" : k}">${esc(m)}</a></li>`).join("");
+    errBox.classList.add("show"); errBox.focus();
+    return;
+  }
+  errBox.classList.remove("show");
+  const r = score(fd);
+  render(r, fd);
+  const btn = document.getElementById("submit"); btn.disabled = true; btn.textContent = "Submitted";
+  send({
+    submittedAt: new Date().toISOString(),
+    name: fd.get("name").trim(), company: fd.get("company").trim(), email: fd.get("email").trim(), phone: fd.get("phone").trim(),
+    role: fd.get("role").trim(), size: fd.get("size"), action: fd.get("action").trim(), consent: true,
+    total: r.total, rating: r.rating, unknown: r.unknown,
+    sections: r.sections.map(s => ({ name: s.name, score: s.score, rating: s.rating, unknown: s.unknown })),
+    answers: r.answers,
+    page: location.href, userAgent: navigator.userAgent
+  });
+});
+form.addEventListener("reset", () => {
+  out.classList.remove("show"); out.innerHTML = "";
+  errBox.classList.remove("show");
+  document.querySelectorAll(".invalid").forEach(e => e.classList.remove("invalid"));
+  document.querySelectorAll(".error-msg").forEach(e => e.remove());
+  const btn = document.getElementById("submit"); btn.disabled = false; btn.textContent = "See my Access Snapshot";
+});
+</script>
+</body>
+</html>
